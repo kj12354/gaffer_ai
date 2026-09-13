@@ -62,7 +62,64 @@ def build_prediction(
     }
 
 
+_DAUGHTER_KEYS = (
+    "instance_id",
+    "parent_instance_id",
+    "ostium_xyz_mm",
+    "seed_xyz_mm",
+    "radius_mm",
+    "direction_xyz",
+)
+
+
+def _is_xyz(value: object) -> bool:
+    if not isinstance(value, (list, tuple)) or len(value) != 3:
+        return False
+    return all(isinstance(x, (int, float)) and np.isfinite(float(x)) for x in value)
+
+
+def validate_prediction(payload: dict[str, Any]) -> None:
+    """Raise ValueError if ``payload`` does not match the challenge schema."""
+    if not isinstance(payload, dict):
+        raise ValueError("prediction must be a JSON object")
+    if not payload.get("case_id"):
+        raise ValueError("prediction missing case_id")
+    parent = payload.get("parent")
+    if not isinstance(parent, dict) or parent.get("instance_id") != "aorta":
+        raise ValueError("prediction parent.instance_id must be 'aorta'")
+    daughters = payload.get("daughters")
+    if not isinstance(daughters, list):
+        raise ValueError("prediction daughters must be a list (empty if none found)")
+    seen: set[str] = set()
+    for i, item in enumerate(daughters):
+        if not isinstance(item, dict):
+            raise ValueError(f"daughters[{i}] must be an object")
+        missing = [k for k in _DAUGHTER_KEYS if k not in item]
+        if missing:
+            raise ValueError(f"daughters[{i}] missing fields: {', '.join(missing)}")
+        rid = str(item["instance_id"])
+        if rid in seen:
+            raise ValueError(f"duplicate instance_id: {rid}")
+        seen.add(rid)
+        if item.get("parent_instance_id") != "aorta":
+            raise ValueError(f"{rid}: parent_instance_id must be 'aorta'")
+        for key in ("ostium_xyz_mm", "seed_xyz_mm", "direction_xyz"):
+            if not _is_xyz(item[key]):
+                raise ValueError(f"{rid}: {key} must be three finite millimetre / unit numbers")
+        try:
+            radius = float(item["radius_mm"])
+        except (TypeError, ValueError) as exc:
+            raise ValueError(f"{rid}: radius_mm must be a number") from exc
+        if not np.isfinite(radius) or radius < 0:
+            raise ValueError(f"{rid}: radius_mm must be a non-negative finite number")
+        direction = np.asarray(item["direction_xyz"], dtype=np.float64)
+        nrm = float(np.linalg.norm(direction))
+        if nrm < 0.5 or nrm > 1.5:
+            raise ValueError(f"{rid}: direction_xyz must be a unit vector (got norm {nrm:.4f})")
+
+
 def write_prediction(payload: dict[str, Any], path: str | Path) -> None:
+    validate_prediction(payload)
     path = Path(path)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(payload, indent=2) + "\n", encoding="utf-8")

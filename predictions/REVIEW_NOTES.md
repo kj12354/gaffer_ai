@@ -96,3 +96,25 @@ Tried and reverted:
 - Bright-blob past the seed (`dump_blob`): killed draft matches (case 19 `003`, 21 `001`, 22 viscerals, 23 `003`). F1 0.708 → 0.585. Real tubes sit next to other bright tissue at 8 mm on 1.5 mm data.
 
 Do not re-enable. Hidden-test 45% is still best served by the recall-first detector, not another drop-filter.
+
+## Gated contact-patch split (2026-09-13)
+
+True-match contact spreads on 19–23 are typically 0.8–6.5 mm; alongside kisses reach 12–14 mm. The fused case-20 instance is 23.7 mm with ridge-cluster cosine −0.23.
+
+Splitter fires only when contact spread ≥ 18 mm **and** two ridge-direction clusters have cosine < 0.15 (each ≥ 3 walks). Both children must pass the existing eligibility/quality checks. Split-derived pairs skip the 5 mm near-dup floor and the 3.5 mm path-merge collapse; raw candidates still use both.
+
+On 19–23 (enabled in a test run only): fired only on case 20 (2 split-derived). Recovered GT `branch_003`. Counts 4/4/9/11/2. No baseline true-positive was fragmented. Case 23 `branch_002` did not fire (contact spread 8.3 mm). subject025 kept set: 0 splits on *kept* daughters, but the unsplit census found other ≥18 mm contacts (see below).
+
+Test-run draft score with splitter on: **P=0.600 R=0.947 F1=0.735** (18/19, pred 30). Case 20 F1 0.86 → 1.00.
+
+**Not shipped.** Full-dataset census (`experiments/artifacts/contact_spread_full_dataset.csv`): 1440 contacted instances, 20 with spread ≥ 18 mm, 18 of which also pass the direction gate. Several are 25–154 mm (iliac / long wall sheet), plus unlabeled cases 001/003/005–008/014/016/018/024/025.
+
+Crop + curvature review of the near-zero-cosine flags (025 id44, 018 id26) and the extreme-cosine long-spread flags showed **no genuine two-lumen pinch**. Extreme walk-cluster cosine is opposite walks along one bending wall. `enable_contact_split` stays **False**. Endpoint cosine alone is not a split trigger.
+
+## Crop adjudication 001–018 (2026-09-13)
+
+Same 24 mm 4-panel crop rubric as 19–23/025. 128 detections. Verdicts: **39 confirmed_real / 5 confirmed_false / 84 uncertain** (`review/rfu_001_018.csv`).
+
+Confirmed false (flush vertebra contact only): 001/010, 002/007, 011/005, 016/001, 016/004.
+
+Reals are clear leaving SMA/celiac/renal tubes. Uncertain used freely for 1 px lumbars, short SMA nubs, and low-contrast 016–018. No detection-logic change from this pass. Do not train a drop-filter on the uncertain majority.

@@ -43,6 +43,15 @@ class PipelineParams:
     path_merge_ostium_mm: float = 8.0
     path_merge_min_dir_cosine: float = 0.40
     path_diverge_dir_cosine: float = 0.25
+    # Contact-patch split: only a long wall-kiss with two opposing ridge
+    # directions. True-match contacts on 19–23 are typically 0.8–6.5 mm;
+    # alongside kisses reach ~12–14 mm. The fused case-20 pair is 23.7 mm.
+    # Off until the full-dataset ≥18 mm contacts are visually reviewed.
+    enable_contact_split: bool = False
+    split_min_contact_spread_mm: float = 18.0
+    split_max_dir_cosine: float = 0.15
+    split_min_walks: int = 6
+    split_min_cluster_walks: int = 3
 
     # Eligibility: origin diameter (partial-volume aware; 2 mm is the policy).
     min_origin_diameter_mm: float = 1.6

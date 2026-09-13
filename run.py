@@ -23,6 +23,29 @@ from branchseed.pipeline import detect_daughters
 from branchseed.resources import Timer
 
 
+def _fail(message: str, code: int = 2) -> None:
+    print(f"error: {message}", file=sys.stderr)
+    raise SystemExit(code)
+
+
+def _as_user_error(exc: BaseException) -> str:
+    """Turn I/O / schema failures into one line. No traceback."""
+    if isinstance(exc, FileNotFoundError):
+        name = exc.filename or str(exc)
+        return f"missing file: {name}"
+    msg = str(exc).strip() or type(exc).__name__
+    low = msg.lower()
+    if "unable to determine imageio" in low or "file too small" in low:
+        return "could not read NIfTI (unrecognized or corrupted file)"
+    if "different sizes" in low or "not co-registered" in low:
+        return msg.splitlines()[0]
+    if "could not read" in low or "unsupported nifti" in low:
+        return msg.splitlines()[0]
+    if isinstance(exc, (OSError, ValueError, RuntimeError)):
+        return msg.splitlines()[0]
+    return f"{type(exc).__name__}: {msg.splitlines()[0]}"
+
+
 def _find_pair(case_dir: Path) -> tuple[Path, Path] | None:
     images = sorted(
         list(case_dir.glob("orig*.nii"))
@@ -44,9 +67,21 @@ def _find_pair(case_dir: Path) -> tuple[Path, Path] | None:
 
 
 def _run_one(image: Path, mask: Path, output: Path, case_id: str | None, verbose: bool) -> None:
-    with Timer() as timer:
-        payload = detect_daughters(str(image), str(mask), case_id=case_id, verbose=verbose)
-    write_prediction(payload, output)
+    image = Path(image)
+    mask = Path(mask)
+    output = Path(output)
+    if not image.exists():
+        _fail(f"missing file: {image}")
+    if not mask.exists():
+        _fail(f"missing file: {mask}")
+    try:
+        with Timer() as timer:
+            payload = detect_daughters(str(image), str(mask), case_id=case_id, verbose=verbose)
+        write_prediction(payload, output)
+    except SystemExit:
+        raise
+    except Exception as exc:
+        _fail(_as_user_error(exc))
     n = len(payload["daughters"])
     print(f"Wrote {output}  ({n} daughter(s))")
     print(timer.stats.format_line())
@@ -64,15 +99,23 @@ def main() -> None:
     args = p.parse_args()
 
     if args.batch_dir:
-        roots = []
-        batch = args.batch_dir
-        kids = sorted([d for d in batch.iterdir() if d.is_dir() and (d.name.startswith("subject") or d.name.startswith("case_"))])
-        if kids:
-            roots = kids
-        elif _find_pair(batch):
-            roots = [batch]
+        batch = Path(args.batch_dir)
+        if not batch.exists():
+            _fail(f"missing file: {batch}")
+        if not batch.is_dir():
+            _fail(f"--batch-dir is not a directory: {batch}")
+        kids = sorted(
+            [
+                d
+                for d in batch.iterdir()
+                if d.is_dir() and (d.name.startswith("subject") or d.name.startswith("case_"))
+            ]
+        )
+        roots = kids if kids else ([batch] if _find_pair(batch) else [])
         if not roots:
-            p.error(f"No subject*/case_* folders with orig/mask pairs under {batch}")
+            _fail(f"No subject*/case_* folders with image/mask pairs under {batch}")
+        n_ok = 0
+        n_fail = 0
         for folder in roots:
             pair = _find_pair(folder)
             if pair is None:
@@ -80,9 +123,19 @@ def main() -> None:
                 continue
             image, mask = pair
             cid = args.case_id or infer_case_id(image)
-            out = args.output_dir / f"{cid}.json"
+            out = Path(args.output_dir) / f"{cid}.json"
             print(f"=== {cid} ===")
-            _run_one(image, mask, out, cid, verbose=not args.quiet)
+            try:
+                _run_one(image, mask, out, cid, verbose=not args.quiet)
+                n_ok += 1
+            except SystemExit as exc:
+                # Keep the rest of the batch running; still a non-zero process
+                # status if anything failed.
+                n_fail += 1
+                if exc.code not in (0, None):
+                    print(f"error: {folder.name} failed", file=sys.stderr)
+        if n_fail:
+            _fail(f"batch finished with {n_fail} failure(s), {n_ok} ok")
         return
 
     if not (args.image and args.aorta_mask and args.output):

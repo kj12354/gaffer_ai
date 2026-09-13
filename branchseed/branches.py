@@ -36,6 +36,8 @@ class Daughter:
     # Output-only landmarks for long wall-kissing contacts.
     output_ostium_zyx: np.ndarray | None = None
     output_seed_zyx: np.ndarray | None = None
+    # True only for the two children of the gated contact-patch splitter.
+    split_derived: bool = False
 
 
 @dataclass
@@ -142,6 +144,106 @@ def _contact_spread_mm(contact: np.ndarray, spacing_zyx: np.ndarray) -> float:
         return 0.0
     phys = coords * spacing_zyx.reshape(1, 3)
     return float(np.max(np.linalg.norm(phys - phys.mean(axis=0), axis=1)))
+
+
+def _contact_ridge_clusters(
+    inst: np.ndarray,
+    contact: np.ndarray,
+    dist: np.ndarray,
+    lumen_radius: np.ndarray,
+    spacing_zyx: np.ndarray,
+    params: PipelineParams,
+) -> tuple[float, np.ndarray, np.ndarray] | None:
+    """Cluster short ridge walks from the contact by local tangent.
+
+    Returns ``(mean_dir_cosine, start_zyx, labels)`` when two balanced
+    direction clusters exist, else ``None``.
+    """
+    coords = np.argwhere(contact)
+    if len(coords) < 6:
+        return None
+    k = min(16, len(coords))
+    pick = np.unique(np.linspace(0, len(coords) - 1, k, dtype=int))
+    starts: list[np.ndarray] = []
+    dirs: list[np.ndarray] = []
+    for idx in pick:
+        start = coords[int(idx)].astype(np.float64)
+        walk = ridge_walk(
+            start, inst, dist, lumen_radius, spacing_zyx,
+            max_mm=params.max_trace_mm, min_mm=params.min_path_mm,
+        )
+        if walk.length_mm < 2.5 or walk.points_zyx.shape[0] < 2:
+            continue
+        d = np.asarray(walk.direction_zyx, dtype=np.float64)
+        n = float(np.linalg.norm(d))
+        if n < 1e-6:
+            continue
+        starts.append(start)
+        dirs.append(d / n)
+    if len(dirs) < params.split_min_walks:
+        return None
+    D = np.stack(dirs)
+    i0, j0, minc = 0, 1, 1.0
+    for i in range(len(D)):
+        for j in range(i + 1, len(D)):
+            c = float(np.dot(D[i], D[j]))
+            if c < minc:
+                minc, i0, j0 = c, i, j
+    m1, m2 = D[i0], D[j0]
+    lab = np.array(
+        [0 if float(np.dot(d, m1)) >= float(np.dot(d, m2)) else 1 for d in D],
+        dtype=np.int32,
+    )
+    n0, n1 = int((lab == 0).sum()), int((lab == 1).sum())
+    if min(n0, n1) < params.split_min_cluster_walks:
+        return None
+    c1 = D[lab == 0].mean(axis=0)
+    c2 = D[lab == 1].mean(axis=0)
+    c1 = c1 / (float(np.linalg.norm(c1)) + 1e-9)
+    c2 = c2 / (float(np.linalg.norm(c2)) + 1e-9)
+    cos = float(np.clip(np.dot(c1, c2), -1.0, 1.0))
+    if cos >= params.split_max_dir_cosine:
+        return None
+    return cos, np.stack(starts), lab
+
+
+def _try_directional_split(
+    inst: np.ndarray,
+    contact: np.ndarray,
+    search: dict[str, np.ndarray],
+    lumen_radius: np.ndarray,
+    aorta: np.ndarray,
+    spacing_zyx: np.ndarray,
+    params: PipelineParams,
+) -> tuple[list[np.ndarray], float, float] | None:
+    """Split one instance into two if contact is long and ridges oppose."""
+    spread = _contact_spread_mm(contact, spacing_zyx)
+    if spread < params.split_min_contact_spread_mm:
+        return None
+    clustered = _contact_ridge_clusters(
+        inst, contact, search["dist"], lumen_radius, spacing_zyx, params
+    )
+    if clustered is None:
+        return None
+    cos, starts, lab = clustered
+    markers = np.zeros(inst.shape, dtype=np.int32)
+    contact_xyz = np.argwhere(contact)
+    start_phys = starts * spacing_zyx.reshape(1, 3)
+    for vox in contact_xyz:
+        phys = vox.astype(np.float64) * spacing_zyx
+        j = int(np.argmin(((start_phys - phys) ** 2).sum(axis=1)))
+        markers[int(vox[0]), int(vox[1]), int(vox[2])] = 1 if lab[j] == 0 else 2
+    if int((markers == 1).sum()) < 3 or int((markers == 2).sum()) < 3:
+        return None
+    basins = distance_transform_edt(markers == 0, sampling=tuple(spacing_zyx))
+    labels = watershed(basins, markers=markers, mask=inst)
+    parts = [labels == 1, labels == 2]
+    for part in parts:
+        if int(part.sum()) < 8:
+            return None
+        if not np.any(_contact_voxels(part, aorta)):
+            return None
+    return parts, spread, cos
 
 
 def _split_if_multiple_ostia(
@@ -563,6 +665,146 @@ def _likely_artifact(d: Daughter, params: PipelineParams) -> str | None:
     return None
 
 
+def _try_build_candidate(
+    inst: np.ndarray,
+    inst_id: str,
+    ct: np.ndarray,
+    aorta: np.ndarray,
+    search: dict[str, np.ndarray],
+    rng: IntensityRange,
+    lumen_radius: np.ndarray,
+    vol: VolumePair,
+    origin_zyx: np.ndarray,
+    params: PipelineParams,
+) -> tuple[Daughter | None, str | None]:
+    """Build one daughter from an instance, or a reject reason."""
+    contact = _contact_voxels(inst, aorta)
+    if not np.any(contact):
+        return None, f"{inst_id}:no_parent_contact"
+
+    ostium = _ostium_zyx(contact, aorta)
+    diam = _origin_diameter_mm(contact, lumen_radius, vol.spacing_zyx)
+    extent_mm = float(search["dist"][inst].max()) if np.any(inst) else 0.0
+    span_mm = _ostium_span_mm(inst, ostium, vol.spacing_zyx)
+    path = ridge_walk(
+        ostium,
+        inst,
+        search["dist"],
+        lumen_radius,
+        vol.spacing_zyx,
+        max_mm=params.max_trace_mm,
+        min_mm=params.min_path_mm,
+    )
+    followable_mm = max(float(path.length_mm), float(extent_mm), float(span_mm))
+    reported_mm = max(float(path.length_mm), float(extent_mm))
+    if followable_mm < params.min_path_mm:
+        return None, (
+            f"{inst_id}:short_path_{path.length_mm:.1f}_ext_{extent_mm:.1f}_span_{span_mm:.1f}mm"
+        )
+    if reported_mm < params.min_path_mm:
+        coords = np.argwhere(inst).astype(np.float64) * vol.spacing_zyx.reshape(1, 3)
+        centered = coords - coords.mean(axis=0)
+        try:
+            ev = np.linalg.svd(centered, compute_uv=False)
+        except np.linalg.LinAlgError:
+            ev = np.zeros(3)
+        aniso = float(ev[0] / max(float(ev[1]), 1e-3))
+        med_v = float(np.median(search["vesselness"][inst]))
+        if aniso < 1.50 or float(ev[0]) < 5.0 or med_v < 0.05:
+            return None, f"{inst_id}:span_blob_aniso_{aniso:.2f}_v{med_v:.3f}"
+    if (not path.seed_ok) or path.length_mm < params.min_path_mm:
+        far = inst & (search["dist"] >= params.min_path_mm)
+        if not np.any(far):
+            coords = np.argwhere(inst)
+            ost = ostium.reshape(1, 3)
+            d2 = ((coords - ost) * vol.spacing_zyx.reshape(1, 3)) ** 2
+            far_idx = d2.sum(axis=1) >= (params.min_path_mm ** 2)
+            far = np.zeros(inst.shape, dtype=bool)
+            if np.any(far_idx):
+                pick = coords[far_idx]
+                far[tuple(pick.T)] = True
+        if np.any(far):
+            coords = np.argwhere(far)
+            ost = ostium.reshape(1, 3)
+            delta = (coords - ost) * vol.spacing_zyx.reshape(1, 3)
+            d2 = (delta * delta).sum(axis=1)
+            dist_at = search["dist"][tuple(coords.T)]
+            score = np.abs(d2 - params.min_path_mm ** 2) - 2.0 * dist_at
+            path.seed_zyx = coords[int(np.argmin(score))].astype(np.float64)
+            path.seed_ok = True
+            step = (path.seed_zyx - ostium) * vol.spacing_zyx
+            n = float(np.linalg.norm(step))
+            if n > 1e-6:
+                path.direction_zyx = step / n
+            path.length_mm = reported_mm
+
+    direction_xyz = _direction_xyz(path.direction_zyx)
+    if _is_crop_cap_origin(ostium, direction_xyz, aorta, params):
+        return None, f"{inst_id}:crop_cap"
+    if (
+        diam >= 4.5
+        and _is_iliac(ostium, direction_xyz, aorta, vol.spacing_zyx, vol.image, origin_zyx, params)
+    ):
+        return None, f"{inst_id}:iliac"
+
+    radius = _radius_at_seed(
+        path.seed_zyx, inst, path.direction_zyx, ct, rng, vol.spacing_zyx
+    )
+    if diam < params.min_origin_diameter_mm and radius < params.min_seed_radius_mm:
+        return None, f"{inst_id}:tiny_diam_{diam:.2f}_r_{radius:.2f}"
+
+    quality = _instance_quality(
+        inst, contact, ct, search["vesselness"], float(search["v_thresh"]),
+        rng, vol.spacing_zyx, params,
+    )
+    if quality is not None:
+        return None, f"{inst_id}:{quality}"
+
+    path_pts = np.vstack([ostium.reshape(1, 3), path.points_zyx, path.seed_zyx.reshape(1, 3)])
+    try:
+        radius_cv, mean_circ = path_consistency(path_pts, inst, vol.spacing_zyx)
+    except Exception:
+        radius_cv, mean_circ = float("nan"), float("nan")
+
+    bone_frac, adj_frac = _ostium_context(
+        ostium,
+        path.direction_zyx,
+        ct,
+        aorta,
+        search["blood"],
+        rng,
+        vol.spacing_zyx,
+        params,
+    )
+
+    strip = None
+    if reported_mm < params.min_path_mm:
+        strip = _strip_landmarks(contact, inst, vol.spacing_zyx, params.min_path_mm)
+    out_ost, out_seed = (strip if strip is not None else (None, None))
+
+    return (
+        Daughter(
+            ostium_zyx=ostium,
+            seed_zyx=path.seed_zyx,
+            radius_mm=float(max(radius, 0.5 * float(np.min(vol.spacing_zyx)))),
+            direction_xyz=direction_xyz,
+            path_length_mm=float(reported_mm),
+            origin_diameter_mm=float(diam),
+            n_voxels=int(inst.sum()),
+            mean_hu=float(ct[inst].mean()),
+            med_vesselness=float(np.median(search["vesselness"][inst])),
+            extent_mm=float(extent_mm),
+            radius_cv=float(radius_cv),
+            mean_circularity=float(mean_circ),
+            bone_frac=float(bone_frac),
+            adj_lumen_frac=float(adj_frac),
+            output_ostium_zyx=out_ost,
+            output_seed_zyx=out_seed,
+        ),
+        None,
+    )
+
+
 def extract_daughters(
     vol: VolumePair,
     ct: np.ndarray,
@@ -602,147 +844,45 @@ def extract_daughters(
             result.rejected.append(f"id{inst_id}:no_parent_contact")
             continue
 
-        ostium = _ostium_zyx(contact, aorta)
-        diam = _origin_diameter_mm(contact, lumen_radius, vol.spacing_zyx)
-        extent_mm = float(search["dist"][inst].max()) if np.any(inst) else 0.0
-        span_mm = _ostium_span_mm(inst, ostium, vol.spacing_zyx)
-        path = ridge_walk(
-            ostium,
-            inst,
-            search["dist"],
-            lumen_radius,
-            vol.spacing_zyx,
-            max_mm=params.max_trace_mm,
-            min_mm=params.min_path_mm,
-        )
-        # Eligibility is ≥5 mm of followable lumen beyond the wall.
-        # Radial wall-distance under-counts daughters that run alongside
-        # the aorta; span from the ostium covers that case. Stored path
-        # length stays ridge/extent so quality rules are not inflated.
-        followable_mm = max(float(path.length_mm), float(extent_mm), float(span_mm))
-        reported_mm = max(float(path.length_mm), float(extent_mm))
-        if followable_mm < params.min_path_mm:
-            result.rejected.append(
-                f"id{inst_id}:short_path_{path.length_mm:.1f}_ext_{extent_mm:.1f}_span_{span_mm:.1f}mm"
+        split = (
+            _try_directional_split(
+                inst, contact, search, lumen_radius, aorta, vol.spacing_zyx, params
             )
-            continue
-        if reported_mm < params.min_path_mm:
-            # Span-only pass: must be a long thin tube, not a fat wall blob.
-            coords = np.argwhere(inst).astype(np.float64) * vol.spacing_zyx.reshape(1, 3)
-            centered = coords - coords.mean(axis=0)
-            try:
-                ev = np.linalg.svd(centered, compute_uv=False)
-            except np.linalg.LinAlgError:
-                ev = np.zeros(3)
-            aniso = float(ev[0] / max(float(ev[1]), 1e-3))
-            med_v = float(np.median(search["vesselness"][inst]))
-            if aniso < 1.50 or float(ev[0]) < 5.0 or med_v < 0.05:
-                result.rejected.append(
-                    f"id{inst_id}:span_blob_aniso_{aniso:.2f}_v{med_v:.3f}"
+            if params.enable_contact_split
+            else None
+        )
+        if split is not None:
+            parts, spread, cos = split
+            built: list[Daughter] = []
+            for k, part in enumerate(parts, start=1):
+                d, reason = _try_build_candidate(
+                    part, f"id{inst_id}s{k}", ct, aorta, search, rng,
+                    lumen_radius, vol, origin_zyx, params,
                 )
+                if d is None:
+                    result.rejected.append(reason or f"id{inst_id}s{k}:split_fail")
+                else:
+                    d.split_derived = True
+                    built.append(d)
+            if len(built) == 2:
+                result.merge_log.append(
+                    f"split id{inst_id} spread={spread:.1f}mm dir_cos={cos:.2f} -> 2"
+                )
+                candidates.extend(built)
                 continue
-        if (not path.seed_ok) or path.length_mm < params.min_path_mm:
-            # Place the seed at ≥5 mm along the instance when the ridge ended early.
-            far = inst & (search["dist"] >= params.min_path_mm)
-            if not np.any(far):
-                coords = np.argwhere(inst)
-                ost = ostium.reshape(1, 3)
-                d2 = ((coords - ost) * vol.spacing_zyx.reshape(1, 3)) ** 2
-                far_idx = d2.sum(axis=1) >= (params.min_path_mm ** 2)
-                far = np.zeros(inst.shape, dtype=bool)
-                if np.any(far_idx):
-                    pick = coords[far_idx]
-                    far[tuple(pick.T)] = True
-            if np.any(far):
-                coords = np.argwhere(far)
-                ost = ostium.reshape(1, 3)
-                delta = (coords - ost) * vol.spacing_zyx.reshape(1, 3)
-                d2 = (delta * delta).sum(axis=1)
-                dist_at = search["dist"][tuple(coords.T)]
-                # Prefer ~5 mm from the ostium, then more outward from the wall.
-                score = np.abs(d2 - params.min_path_mm ** 2) - 2.0 * dist_at
-                path.seed_zyx = coords[int(np.argmin(score))].astype(np.float64)
-                path.seed_ok = True
-                step = (path.seed_zyx - ostium) * vol.spacing_zyx
-                n = float(np.linalg.norm(step))
-                if n > 1e-6:
-                    path.direction_zyx = step / n
-                path.length_mm = reported_mm
-
-        direction_xyz = _direction_xyz(path.direction_zyx)
-        if _is_crop_cap_origin(ostium, direction_xyz, aorta, params):
-            result.rejected.append(f"id{inst_id}:crop_cap")
-            continue
-        if (
-            diam >= 4.5
-            and _is_iliac(ostium, direction_xyz, aorta, vol.spacing_zyx, vol.image, origin_zyx, params)
-        ):
-            result.rejected.append(f"id{inst_id}:iliac")
-            continue
-
-        radius = _radius_at_seed(
-            path.seed_zyx, inst, path.direction_zyx, ct, rng, vol.spacing_zyx
-        )
-        if diam < params.min_origin_diameter_mm and radius < params.min_seed_radius_mm:
-            result.rejected.append(
-                f"id{inst_id}:tiny_diam_{diam:.2f}_r_{radius:.2f}"
+            result.merge_log.append(
+                f"split_abort id{inst_id} spread={spread:.1f}mm "
+                f"dir_cos={cos:.2f} kept_parts={len(built)}"
             )
-            continue
 
-        quality = _instance_quality(
-            inst, contact, ct, search["vesselness"], float(search["v_thresh"]),
-            rng, vol.spacing_zyx, params,
+        d, reason = _try_build_candidate(
+            inst, f"id{inst_id}", ct, aorta, search, rng,
+            lumen_radius, vol, origin_zyx, params,
         )
-        if quality is not None:
-            result.rejected.append(f"id{inst_id}:{quality}")
-            continue
-
-        path_pts = np.vstack([ostium.reshape(1, 3), path.points_zyx, path.seed_zyx.reshape(1, 3)])
-        try:
-            radius_cv, mean_circ = path_consistency(path_pts, inst, vol.spacing_zyx)
-        except Exception:
-            radius_cv, mean_circ = float("nan"), float("nan")
-
-        bone_frac, adj_frac = _ostium_context(
-            ostium,
-            path.direction_zyx,
-            ct,
-            aorta,
-            search["blood"],
-            rng,
-            vol.spacing_zyx,
-            params,
-        )
-
-        # Span-only alongside tubes: snap output ostium to the origin end
-        # of the wall-kiss. Radially leaving viscerals keep the centroid.
-        strip = None
-        if reported_mm < params.min_path_mm:
-            strip = _strip_landmarks(
-                contact, inst, vol.spacing_zyx, params.min_path_mm
-            )
-        out_ost, out_seed = (strip if strip is not None else (None, None))
-
-        candidates.append(
-            Daughter(
-                ostium_zyx=ostium,
-                seed_zyx=path.seed_zyx,
-                radius_mm=float(max(radius, 0.5 * float(np.min(vol.spacing_zyx)))),
-                direction_xyz=direction_xyz,
-                path_length_mm=float(reported_mm),
-                origin_diameter_mm=float(diam),
-                n_voxels=int(inst.sum()),
-                mean_hu=float(ct[inst].mean()),
-                med_vesselness=float(np.median(search["vesselness"][inst])),
-                extent_mm=float(extent_mm),
-                radius_cv=float(radius_cv),
-                mean_circularity=float(mean_circ),
-                bone_frac=float(bone_frac),
-                adj_lumen_frac=float(adj_frac),
-                output_ostium_zyx=out_ost,
-                output_seed_zyx=out_seed,
-            )
-        )
+        if d is None:
+            result.rejected.append(reason or f"id{inst_id}:failed")
+        else:
+            candidates.append(d)
 
     # 1) Unconditional near-duplicate collapse (same ostium, two seeds).
     # 2) Path-divergence merge for genuinely distinct-but-nearby ostia.
@@ -822,6 +962,11 @@ def _merge_near_duplicates(
             if d_ost > floor:
                 continue
             a, b = candidates[i], candidates[j]
+            if a.split_derived and b.split_derived:
+                log.append(
+                    f"near_dup SKIP split-derived {case_id} 3D={d_ost:.2f}mm"
+                )
+                continue
             if _near_dup_score(a) >= _near_dup_score(b):
                 keep[j] = False
                 kept_i, dropped = i, j
@@ -879,6 +1024,12 @@ def _dedup_ostia(
                 )
             )
             dz = abs(float(ostia[i][2] - ostia[j][2]))
+            if candidates[i].split_derived and candidates[j].split_derived:
+                log.append(
+                    f"pair {i},{j}: keep_split_derived (3D ostium {d_ost:.1f} mm "
+                    f"dir_cos={cos:.2f} seed_sep={d_seed:.1f} mm)"
+                )
+                continue
             if d_ost <= merge_mm:
                 reason = f"close_ostium_{d_ost:.1f}mm"
             elif d_ost > params.path_merge_ostium_mm:

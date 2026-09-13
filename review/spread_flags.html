@@ -1,0 +1,584 @@
+<!doctype html>
+<html><head><meta charset="utf-8"/>
+<title>Review spread ≥15 mm flags</title>
+<style>
+body { font-family: sans-serif; background:#111; color:#eee; margin:0; }
+header { position:sticky; top:0; background:#1b1b1b; padding:10px 16px; border-bottom:1px solid #333; z-index:2; }
+.card { display:flex; gap:16px; padding:16px; border-bottom:1px solid #333; align-items:flex-start; }
+.card.active { outline:2px solid #6cf; }
+.meta { min-width:240px; }
+img { max-width:640px; background:#000; }
+.status.draft_match { color:#7d7; }
+.status.extra { color:#f8a; }
+button { margin-right:6px; padding:4px 8px; cursor:pointer; }
+button.on { background:#2a6; color:#fff; }
+kbd { background:#333; padding:1px 5px; border-radius:3px; }
+</style></head><body>
+<header>
+  <strong>spread ≥15 mm flags</strong> — 25 detections.
+  Keys: <kbd>r</kbd> real <kbd>f</kbd> false <kbd>u</kbd> uncertain
+  <kbd>n</kbd>/<kbd>j</kbd> next <kbd>p</kbd>/<kbd>k</kbd> prev.
+  <button id="export">download verdicts.csv</button>
+  <a href="index.html" style="color:#9cf;margin-left:12px">all cases</a>
+</header>
+
+<article class="card" data-idx="0" data-case="subject001" data-id="branch_007 (id1)">
+  <div class="meta">
+    <h2>branch_007 (id1)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=43.795
+       z=-1047.89  r=1764</p>
+    <ul>
+      <li>vesselness <b>-0.937</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>1815</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject001|branch_007 (id1)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject001_id1.png" alt="branch_007 (id1)"/>
+</article>
+<article class="card" data-idx="1" data-case="subject001" data-id="branch_001 (id63)">
+  <div class="meta">
+    <h2>branch_001 (id63)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=19.633
+       z=-958.35  r=691</p>
+    <ul>
+      <li>vesselness <b>-0.812</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>2411</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject001|branch_001 (id63)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject001_id63.png" alt="branch_001 (id63)"/>
+</article>
+<article class="card" data-idx="2" data-case="subject003" data-id="branch_005 (id1)">
+  <div class="meta">
+    <h2>branch_005 (id1)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=58.244
+       z=1454.62  r=1858</p>
+    <ul>
+      <li>vesselness <b>-0.716</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>2982</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject003|branch_005 (id1)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject003_id1.png" alt="branch_005 (id1)"/>
+</article>
+<article class="card" data-idx="3" data-case="subject005" data-id="branch_001 (id96)">
+  <div class="meta">
+    <h2>branch_001 (id96)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=25.469
+       z=1529.33  r=684</p>
+    <ul>
+      <li>vesselness <b>-0.593</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>1618</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject005|branch_001 (id96)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject005_id96.png" alt="branch_001 (id96)"/>
+</article>
+<article class="card" data-idx="4" data-case="subject006" data-id="branch_004 (id46)">
+  <div class="meta">
+    <h2>branch_004 (id46)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=34.767
+       z=1564.6  r=1420</p>
+    <ul>
+      <li>vesselness <b>-0.751</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>2706</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject006|branch_004 (id46)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject006_id46.png" alt="branch_004 (id46)"/>
+</article>
+<article class="card" data-idx="5" data-case="subject007" data-id="id4 (id4)">
+  <div class="meta">
+    <h2>id4 (id4)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=21.706
+       z=-1222.88  r=433</p>
+    <ul>
+      <li>vesselness <b>-0.921</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>664</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject007|id4 (id4)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject007_id4.png" alt="id4 (id4)"/>
+</article>
+<article class="card" data-idx="6" data-case="subject007" data-id="id18 (id18)">
+  <div class="meta">
+    <h2>id18 (id18)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=23.037
+       z=-1183.39  r=421</p>
+    <ul>
+      <li>vesselness <b>-0.972</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>421</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject007|id18 (id18)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject007_id18.png" alt="id18 (id18)"/>
+</article>
+<article class="card" data-idx="7" data-case="subject008" data-id="branch_004 (id18)">
+  <div class="meta">
+    <h2>branch_004 (id18)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=72.972
+       z=1490.05  r=4763</p>
+    <ul>
+      <li>vesselness <b>-0.808</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>24675</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject008|branch_004 (id18)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject008_id18.png" alt="branch_004 (id18)"/>
+</article>
+<article class="card" data-idx="8" data-case="subject014" data-id="branch_008 (id4)">
+  <div class="meta">
+    <h2>branch_008 (id4)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=22.23
+       z=1408.35  r=325</p>
+    <ul>
+      <li>vesselness <b>-0.899</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>333</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject014|branch_008 (id4)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject014_id4.png" alt="branch_008 (id4)"/>
+</article>
+<article class="card" data-idx="9" data-case="subject016" data-id="branch_014 (id2)">
+  <div class="meta">
+    <h2>branch_014 (id2)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=40.421
+       z=388.5  r=443</p>
+    <ul>
+      <li>vesselness <b>-0.501</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>3693</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject016|branch_014 (id2)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject016_id2.png" alt="branch_014 (id2)"/>
+</article>
+<article class="card" data-idx="10" data-case="subject016" data-id="branch_017 (id17)">
+  <div class="meta">
+    <h2>branch_017 (id17)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=21.669
+       z=378.99  r=74</p>
+    <ul>
+      <li>vesselness <b>-0.741</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>395</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject016|branch_017 (id17)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject016_id17.png" alt="branch_017 (id17)"/>
+</article>
+<article class="card" data-idx="11" data-case="subject016" data-id="id35 (id35)">
+  <div class="meta">
+    <h2>id35 (id35)  <span class="status near_18">near_18</span></h2>
+    <p>gt=no  err=15.93
+       z=394.44  r=63</p>
+    <ul>
+      <li>vesselness <b></b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>3207</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject016|id35 (id35)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject016_id35.png" alt="id35 (id35)"/>
+</article>
+<article class="card" data-idx="12" data-case="subject016" data-id="id57 (id57)">
+  <div class="meta">
+    <h2>id57 (id57)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=26.334
+       z=420.92  r=103</p>
+    <ul>
+      <li>vesselness <b>-0.678</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>376</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject016|id57 (id57)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject016_id57.png" alt="id57 (id57)"/>
+</article>
+<article class="card" data-idx="13" data-case="subject016" data-id="branch_006 (id102)">
+  <div class="meta">
+    <h2>branch_006 (id102)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=29.153
+       z=464.58  r=139</p>
+    <ul>
+      <li>vesselness <b>-0.544</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>2454</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject016|branch_006 (id102)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject016_id102.png" alt="branch_006 (id102)"/>
+</article>
+<article class="card" data-idx="14" data-case="subject016" data-id="branch_002 (id136)">
+  <div class="meta">
+    <h2>branch_002 (id136)  <span class="status near_18">near_18</span></h2>
+    <p>gt=no  err=16.27
+       z=480.62  r=128</p>
+    <ul>
+      <li>vesselness <b>-0.563</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>142</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject016|branch_002 (id136)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject016_id136.png" alt="branch_002 (id136)"/>
+</article>
+<article class="card" data-idx="15" data-case="subject018" data-id="id1 (id1)">
+  <div class="meta">
+    <h2>id1 (id1)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=154.046
+       z=946.06  r=6875</p>
+    <ul>
+      <li>vesselness <b>-0.915</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>72670</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject018|id1 (id1)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject018_id1.png" alt="id1 (id1)"/>
+</article>
+<article class="card" data-idx="16" data-case="subject018" data-id="id26 (id26)">
+  <div class="meta">
+    <h2>id26 (id26)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=27.943
+       z=1076.96  r=1511</p>
+    <ul>
+      <li>vesselness <b>0.122</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>16903</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject018|id26 (id26)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject018_id26.png" alt="id26 (id26)"/>
+</article>
+<article class="card" data-idx="17" data-case="case_20" data-id="branch_001 (id7)">
+  <div class="meta">
+    <h2>branch_001 (id7)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=23.735
+       z=360.03  r=26</p>
+    <ul>
+      <li>vesselness <b>-0.266</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>939</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="case_20|branch_001 (id7)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_case_20_id7.png" alt="branch_001 (id7)"/>
+</article>
+<article class="card" data-idx="18" data-case="case_21" data-id="branch_008 (id2)">
+  <div class="meta">
+    <h2>branch_008 (id2)  <span class="status near_18">near_18</span></h2>
+    <p>gt=no  err=17.243
+       z=336.17  r=32</p>
+    <ul>
+      <li>vesselness <b></b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>351</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="case_21|branch_008 (id2)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_case_21_id2.png" alt="branch_008 (id2)"/>
+</article>
+<article class="card" data-idx="19" data-case="case_21" data-id="branch_006 (id8)">
+  <div class="meta">
+    <h2>branch_006 (id8)  <span class="status over_18">over_18</span></h2>
+    <p>gt=no  err=24.421
+       z=355.21  r=20</p>
+    <ul>
+      <li>vesselness <b></b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>1115</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="case_21|branch_006 (id8)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_case_21_id8.png" alt="branch_006 (id8)"/>
+</article>
+<article class="card" data-idx="20" data-case="case_23" data-id="id1 (id1)">
+  <div class="meta">
+    <h2>id1 (id1)  <span class="status near_18">near_18</span></h2>
+    <p>gt=no  err=15.898
+       z=229.95  r=225</p>
+    <ul>
+      <li>vesselness <b>-0.117</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>2305</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="case_23|id1 (id1)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_case_23_id1.png" alt="id1 (id1)"/>
+</article>
+<article class="card" data-idx="21" data-case="subject024" data-id="branch_002 (id1)">
+  <div class="meta">
+    <h2>branch_002 (id1)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=90.051
+       z=1830.31  r=3721</p>
+    <ul>
+      <li>vesselness <b>-0.467</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>29584</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject024|branch_002 (id1)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject024_id1.png" alt="branch_002 (id1)"/>
+</article>
+<article class="card" data-idx="22" data-case="subject025" data-id="id33 (id33)">
+  <div class="meta">
+    <h2>id33 (id33)  <span class="status over_18">over_18</span></h2>
+    <p>gt=no  err=22.316
+       z=-98.33  r=272</p>
+    <ul>
+      <li>vesselness <b></b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>3839</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject025|id33 (id33)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject025_id33.png" alt="id33 (id33)"/>
+</article>
+<article class="card" data-idx="23" data-case="subject025" data-id="id44 (id44)">
+  <div class="meta">
+    <h2>id44 (id44)  <span class="status over_18">over_18</span></h2>
+    <p>gt=yes  err=41.439
+       z=-89.06  r=23</p>
+    <ul>
+      <li>vesselness <b>0.078</b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>6523</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject025|id44 (id44)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject025_id44.png" alt="id44 (id44)"/>
+</article>
+<article class="card" data-idx="24" data-case="subject025" data-id="branch_008 (id52)">
+  <div class="meta">
+    <h2>branch_008 (id52)  <span class="status near_18">near_18</span></h2>
+    <p>gt=no  err=15.777
+       z=-80.83  r=45</p>
+    <ul>
+      <li>vesselness <b></b></li>
+      <li>radius_cv <b></b></li>
+      <li>circularity <b></b></li>
+      <li>path_mm <b>4245</b></li>
+      <li>mean_HU <b></b></li>
+    </ul>
+    <div class="verdict" data-key="subject025|branch_008 (id52)">
+      <button data-v="confirmed_real">r real</button>
+      <button data-v="confirmed_false">f false</button>
+      <button data-v="uncertain">u uncertain</button>
+      <span class="chosen"></span>
+    </div>
+  </div>
+  <img src="crops/spread_subject025_id52.png" alt="branch_008 (id52)"/>
+</article>
+<script>
+const KEY='branchseed_verdicts_v1';
+const store=JSON.parse(localStorage.getItem(KEY)||'{}');
+const cards=[...document.querySelectorAll('.card')];
+let cur=0;
+function paint(){
+  cards.forEach((c,i)=>c.classList.toggle('active', i===cur));
+  document.querySelectorAll('.verdict').forEach(v=>{
+    const k=v.dataset.key; const val=store[k]||'';
+    v.querySelector('.chosen').textContent=val;
+    v.querySelectorAll('button').forEach(b=>b.classList.toggle('on', b.dataset.v===val));
+  });
+}
+function setV(v){
+  const c=cards[cur]; const k=c.dataset.case+'|'+c.dataset.id;
+  store[k]=v; localStorage.setItem(KEY, JSON.stringify(store)); paint();
+}
+document.querySelectorAll('.verdict button').forEach(b=>b.onclick=()=>{
+  cur=cards.indexOf(b.closest('.card')); setV(b.dataset.v);
+});
+document.addEventListener('keydown', e=>{
+  if(e.key==='r') setV('confirmed_real');
+  if(e.key==='f') setV('confirmed_false');
+  if(e.key==='u') setV('uncertain');
+  if(e.key==='n'||e.key==='j'){ cur=Math.min(cards.length-1, cur+1); paint(); cards[cur].scrollIntoView({block:'center'}); }
+  if(e.key==='p'||e.key==='k'){ cur=Math.max(0, cur-1); paint(); cards[cur].scrollIntoView({block:'center'}); }
+});
+document.getElementById('export').onclick=()=>{
+  let csv='case,instance_id,verdict\n';
+  Object.entries(store).forEach(([k,v])=>{ const [c,id]=k.split('|'); csv+=c+','+id+','+v+'\n'; });
+  const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([csv]));
+  a.download='review_verdicts.csv'; a.click();
+};
+paint();
+</script></body></html>

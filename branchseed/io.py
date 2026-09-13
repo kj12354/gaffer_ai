@@ -297,11 +297,27 @@ def load_case(
     """Load a CT / aorta-mask pair and confirm they share one grid."""
     image_path = Path(image_path)
     mask_path = Path(mask_path)
+    if not image_path.exists():
+        raise FileNotFoundError(f"Image not found: {image_path}")
+    if not mask_path.exists():
+        raise FileNotFoundError(f"Aorta mask not found: {mask_path}")
     cid = infer_case_id(image_path, case_id)
-    image, src_i = read_image_robust(image_path, "ct")
-    mask, src_m = read_image_robust(mask_path, "mask")
+    try:
+        image, src_i = read_image_robust(image_path, "ct")
+    except (RuntimeError, ValueError, OSError, EOFError) as exc:
+        raise ValueError(f"Could not read CT NIfTI '{image_path}': {exc}") from exc
+    try:
+        mask, src_m = read_image_robust(mask_path, "mask")
+    except (RuntimeError, ValueError, OSError, EOFError) as exc:
+        raise ValueError(f"Could not read aorta-mask NIfTI '{mask_path}': {exc}") from exc
     if src_i != "sitk" or src_m != "sitk":
         print(f"[{cid}] image IO fallback ct={src_i}  mask={src_m}")
+    if image.GetSize() != mask.GetSize():
+        raise ValueError(
+            "Image and aorta mask have different sizes: "
+            f"image {tuple(image.GetSize())} vs mask {tuple(mask.GetSize())}. "
+            "They must share the same voxel grid."
+        )
     _log_header_shear(image_path, cid)
     image, mask = _orthonormalize_pair(image, mask, cid)
 

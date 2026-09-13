@@ -1,0 +1,129 @@
+case,instance_id,verdict,note
+case_001,branch_001,uncertain,aorta-like no leaving
+case_001,branch_002,confirmed_real,clear SMA/celiac leaving
+case_001,branch_003,uncertain,no leaving tube
+case_001,branch_004,confirmed_real,clear renal leaving
+case_001,branch_005,uncertain,possible lumbar 1px
+case_001,branch_006,uncertain,short wall stub
+case_001,branch_007,uncertain,possible ostium/wall
+case_001,branch_008,uncertain,isolated lumen
+case_001,branch_009,uncertain,isolated lumen
+case_001,branch_010,confirmed_false,vertebra contact
+case_002,branch_001,uncertain,possible SMA nub
+case_002,branch_002,confirmed_real,clear SMA/celiac leaving
+case_002,branch_003,confirmed_real,clear right renal leaving
+case_002,branch_004,confirmed_real,clear left renal leaving
+case_002,branch_005,uncertain,isolated lumen no leaving
+case_002,branch_006,uncertain,isolated lumen no leaving
+case_002,branch_007,confirmed_false,vertebra contact
+case_002,branch_008,uncertain,isolated lumen no leaving
+case_003,branch_001,uncertain,possible SMA nub
+case_003,branch_002,uncertain,short wall stub
+case_003,branch_003,confirmed_real,clear SMA/celiac leaving
+case_003,branch_004,confirmed_real,clear renal leaving
+case_003,branch_005,uncertain,isolated lumen no leaving
+case_004,branch_001,uncertain,possible SMA nub
+case_004,branch_002,uncertain,possible SMA nub
+case_004,branch_003,uncertain,no leaving tube
+case_004,branch_004,confirmed_real,clear renal leaving
+case_004,branch_005,uncertain,possible lumbar 1px
+case_004,branch_006,uncertain,isolated lumen no leaving
+case_004,branch_007,uncertain,possible lumbar 1px
+case_004,branch_008,uncertain,isolated lumen no leaving
+case_004,branch_009,uncertain,isolated lumen no leaving
+case_004,branch_010,uncertain,isolated lumen no leaving
+case_004,branch_011,uncertain,short isolated lumen
+case_005,branch_001,uncertain,possible SMA nub
+case_005,branch_002,confirmed_real,clear SMA/celiac leaving
+case_005,branch_003,confirmed_real,clear right renal leaving
+case_005,branch_004,confirmed_real,clear left renal leaving
+case_005,branch_005,uncertain,short wall stub
+case_005,branch_006,uncertain,isolated lumen no leaving
+case_005,branch_007,uncertain,possible lumbar 1px
+case_006,branch_001,uncertain,possible SMA nub
+case_006,branch_002,confirmed_real,clear SMA/celiac leaving
+case_006,branch_003,uncertain,isolated lumen no leaving
+case_006,branch_004,uncertain,short isolated lumen
+case_007,branch_001,uncertain,short possible SMA
+case_007,branch_002,uncertain,possible SMA nub
+case_007,branch_003,confirmed_real,clear SMA/celiac leaving
+case_007,branch_004,confirmed_real,clear SMA/celiac leaving
+case_007,branch_005,confirmed_real,clear renal leaving
+case_007,branch_006,uncertain,isolated lumen no leaving
+case_008,branch_001,uncertain,low-v near vertebra
+case_008,branch_002,uncertain,isolated lumen no leaving
+case_008,branch_003,confirmed_real,clear renal leaving
+case_008,branch_004,uncertain,possible lumbar 1px
+case_008,branch_005,uncertain,isolated lumen no leaving
+case_009,branch_001,uncertain,nearby MIP vessels
+case_009,branch_002,confirmed_real,clear SMA/celiac leaving
+case_009,branch_003,uncertain,isolated lumen no leaving
+case_009,branch_004,confirmed_real,clear left renal leaving
+case_009,branch_005,uncertain,possible lumbar 1px
+case_010,branch_001,uncertain,possible SMA nub
+case_010,branch_002,confirmed_real,clear SMA/celiac leaving
+case_010,branch_003,confirmed_real,clear right renal leaving
+case_010,branch_004,confirmed_real,clear left renal leaving
+case_011,branch_001,confirmed_real,clear SMA/celiac leaving
+case_011,branch_002,confirmed_real,clear SMA/celiac leaving
+case_011,branch_003,confirmed_real,clear bilateral renal leaving
+case_011,branch_004,confirmed_real,clear renal leaving
+case_011,branch_005,confirmed_false,vertebra contact
+case_011,branch_006,uncertain,possible lumbar 1px
+case_011,branch_007,uncertain,possible lumbar 1px
+case_011,branch_008,uncertain,isolated lumen no leaving
+case_011,branch_009,uncertain,possible lumbar 1px
+case_011,branch_010,uncertain,possible lumbar 1px
+case_012,branch_001,confirmed_real,clear SMA/celiac leaving
+case_012,branch_002,confirmed_real,clear SMA/celiac leaving
+case_012,branch_003,confirmed_real,clear renal leaving
+case_012,branch_004,confirmed_real,clear renal leaving
+case_012,branch_005,uncertain,possible lumbar 1px
+case_012,branch_006,uncertain,possible lumbar 1px
+case_012,branch_007,uncertain,short possible lumbar
+case_012,branch_008,uncertain,possible lumbar 1px
+case_012,branch_009,uncertain,possible lumbar 1px
+case_013,branch_001,confirmed_real,clear celiac bifurcation leaving
+case_013,branch_002,confirmed_real,clear SMA/celiac leaving
+case_013,branch_003,confirmed_real,clear leaving tube
+case_013,branch_004,confirmed_real,clear renal leaving
+case_013,branch_005,uncertain,short isolated lumen
+case_014,branch_001,uncertain,possible SMA nub
+case_014,branch_002,confirmed_real,clear SMA/celiac leaving
+case_014,branch_003,confirmed_real,clear visceral leaving
+case_014,branch_004,confirmed_real,clear right renal leaving
+case_014,branch_005,confirmed_real,clear left renal leaving
+case_014,branch_006,uncertain,isolated lumen no leaving
+case_014,branch_007,uncertain,possible lumbar 1px
+case_014,branch_008,uncertain,possible lumbar 1px
+case_015,branch_001,uncertain,possible SMA nub
+case_015,branch_002,confirmed_real,clear SMA/celiac leaving
+case_015,branch_003,uncertain,possible renal vs SMA
+case_015,branch_004,confirmed_real,clear renal leaving
+case_015,branch_005,uncertain,isolated lumen near vertebra
+case_015,branch_006,uncertain,isolated lumen no leaving
+case_015,branch_007,uncertain,possible lumbar 1px
+case_015,branch_008,uncertain,possible lumbar 1px
+case_016,branch_001,confirmed_false,vertebra contact
+case_016,branch_002,uncertain,low-contrast isolated lumen
+case_016,branch_003,uncertain,low-contrast isolated lumen
+case_016,branch_004,confirmed_false,vertebra contact
+case_016,branch_005,uncertain,low-contrast isolated lumen
+case_016,branch_006,uncertain,low-contrast lumen near bone
+case_016,branch_007,uncertain,low-contrast isolated lumen
+case_016,branch_008,uncertain,low-contrast isolated lumen
+case_016,branch_009,uncertain,low-contrast lumen near bone
+case_016,branch_010,uncertain,low-contrast isolated lumen
+case_016,branch_011,uncertain,low-contrast lumen near bone
+case_016,branch_012,uncertain,isolated lumen near vertebra
+case_016,branch_013,uncertain,low-contrast lumen near bone
+case_016,branch_014,uncertain,low-contrast isolated lumen
+case_016,branch_015,uncertain,low-contrast lumen near bone
+case_016,branch_016,uncertain,low-contrast isolated lumen
+case_016,branch_017,uncertain,low-contrast lumen near bone
+case_017,branch_001,uncertain,isolated lumen nearby MIP vessels
+case_018,branch_001,uncertain,low-contrast isolated lumen
+case_018,branch_002,uncertain,low-contrast lumen near bone
+case_018,branch_003,uncertain,low-contrast isolated lumen
+case_018,branch_004,uncertain,low-contrast isolated lumen
+case_018,branch_005,uncertain,low-contrast isolated lumen

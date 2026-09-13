@@ -8,6 +8,8 @@ The detector is classical CV only (adaptive HU calibration, 3D Frangi vesselness
 
 ## Setup
 
+Python 3.11 or 3.12, CPU only. Versions in `requirements.txt` are pinned.
+
 ```bash
 python3 -m venv .venv && .venv/bin/pip install -r requirements.txt
 ```
@@ -66,18 +68,22 @@ The challenge asks for a simple visual check on at least three cases (aorta, ost
 
 If nothing eligible is found, `daughters` is an empty list.
 
+## Known limitations
+
+- Case 20: two superior ostia ~6 mm apart grow as one instance (contact spread 23.7 mm). Draft FN `branch_003`.
+- Case 23: posterior partner of the kept match is not seeded (ostium voxel inside the aorta mask).
+- Long wall-kisses / iliac sheets can produce one elongated contact; a directional contact splitter was tested and **not shipped** (smooth curvature is not two ostia).
+- Bone/vertebra extras on some cases sit inside the blood HU window; they are not all dropped.
+- Manual crop review of subjects 001–018 (128 detections): **39 confirmed real / 5 confirmed false / 84 uncertain**. The five false calls are flush vertebra contact. Uncertain 1 px lumbars and low-contrast 016–018 were not used to train a drop-filter.
+- Rejected experiments (logistic quality gate, ungated dump-blob, live contact splitter) live under `experiments/` and are not on the run path.
+
 ## Layout
 
 ```
 run.py / validate.py / visualize.py
-branchseed/
-  io.py            SimpleITK load + LPS conversion
-  intensity.py     per-case HU calibration
-  vesselness.py    Frangi + search shell
-  skeleton.py      ridge / centreline walk
-  branches.py      candidates, filters, landmarks
-  output.py        JSON schema
-  pipeline.py      orchestration
-  validate.py      matching metrics
-  visualize.py     static 3D check
+branchseed/          live detector
+predictions/         development-set JSON + draft metrics
+visuals/             required 3-case aorta / ostia / direction checks
+review/              crop adjudication pages (not required to run)
+experiments/         rejected approaches and diagnostic scripts
 ```

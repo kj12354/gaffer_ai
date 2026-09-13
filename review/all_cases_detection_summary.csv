@@ -1,0 +1,180 @@
+case,instance_id,status,gt_id,ostium_err_mm,ostium_x,ostium_y,ostium_z,radius_mm,path_length_mm,vesselness,mean_hu,radius_cv,mean_circularity,crop_path,verdict,note
+case_001,branch_001,extra,,,11.48,36.05,-958.35,1.7054,13.97,0.2726,295.4,0.6601,0.4062,review/crops/case_001_branch_001.png,uncertain,aorta-like no leaving
+case_001,branch_002,extra,,,16.46,31.93,-975.89,1.7598,13.88,0.3913,300.4,0.6626,0.7311,review/crops/case_001_branch_002.png,confirmed_real,clear SMA/celiac leaving
+case_001,branch_003,extra,,,10.15,33.13,-981.66,1.4316,13.66,0.3055,289.5,0.4739,0.5637,review/crops/case_001_branch_003.png,uncertain,no leaving tube
+case_001,branch_004,extra,,,19.21,35.36,-991.35,1.231,13.55,0.5915,284.3,0.5709,0.5583,review/crops/case_001_branch_004.png,confirmed_real,clear renal leaving
+case_001,branch_005,extra,,,19.49,30.57,-1030.5,0.985,11.39,0.6694,285.5,0.5022,0.6726,review/crops/case_001_branch_005.png,uncertain,possible lumbar 1px
+case_001,branch_006,extra,,,17.4,25.97,-1032.04,1.8291,1.11,0.1559,282.4,0.2639,0.5163,review/crops/case_001_branch_006.png,uncertain,short wall stub
+case_001,branch_007,extra,,,16.67,37.84,-1053.59,1.1864,13.33,0.6331,295.9,0.4515,0.6887,review/crops/case_001_branch_007.png,uncertain,possible ostium/wall
+case_001,branch_008,extra,,,18.27,28.03,-1056.85,1.0051,10.01,0.3825,287.6,0.2137,0.5471,review/crops/case_001_branch_008.png,uncertain,isolated lumen
+case_001,branch_009,extra,,,19.01,32.25,-1072.33,1.1864,10.2,0.6266,305.2,0.7075,0.6543,review/crops/case_001_branch_009.png,uncertain,isolated lumen
+case_001,branch_010,extra,,,12.07,39.7,-1073.04,1.4079,13.99,0.0233,328.1,0.6669,0.6186,review/crops/case_001_branch_010.png,confirmed_false,vertebra contact
+case_002,branch_001,extra,,,-4.91,13.25,1558.74,1.6555,14.0,0.4187,314.0,0.6145,0.6355,review/crops/case_002_branch_001.png,uncertain,possible SMA nub
+case_002,branch_002,extra,,,-7.02,8.52,1541.64,1.6579,13.94,0.6116,312.8,0.3957,0.6711,review/crops/case_002_branch_002.png,confirmed_real,clear SMA/celiac leaving
+case_002,branch_003,extra,,,-15.64,9.09,1525.58,1.5041,12.83,0.54,316.9,0.5207,0.7394,review/crops/case_002_branch_003.png,confirmed_real,clear right renal leaving
+case_002,branch_004,extra,,,-3.68,10.27,1517.46,2.504,13.98,0.5429,309.6,0.4233,0.7863,review/crops/case_002_branch_004.png,confirmed_real,clear left renal leaving
+case_002,branch_005,extra,,,-10.84,0.87,1486.31,0.7864,13.89,0.4198,232.6,0.1697,0.7432,review/crops/case_002_branch_005.png,uncertain,isolated lumen no leaving
+case_002,branch_006,extra,,,-4.11,-13.07,1473.19,1.3485,4.17,0.4187,279.1,0.4186,0.6831,review/crops/case_002_branch_006.png,uncertain,isolated lumen no leaving
+case_002,branch_007,extra,,,-3.82,-2.45,1469.22,1.6448,13.98,0.0481,310.6,0.257,0.5076,review/crops/case_002_branch_007.png,confirmed_false,vertebra contact
+case_002,branch_008,extra,,,-7.44,-14.0,1458.68,1.2192,7.06,0.4909,286.5,0.8087,0.6661,review/crops/case_002_branch_008.png,uncertain,isolated lumen no leaving
+case_003,branch_001,extra,,,26.55,10.76,1552.03,1.5157,13.99,0.4108,291.6,0.4729,0.5381,review/crops/case_003_branch_001.png,uncertain,possible SMA nub
+case_003,branch_002,extra,,,17.45,10.25,1548.38,1.7512,1.04,0.1139,267.7,0.4792,0.4817,review/crops/case_003_branch_002.png,uncertain,short wall stub
+case_003,branch_003,extra,,,19.21,4.86,1527.25,1.5612,14.0,0.5229,298.6,0.5174,0.7629,review/crops/case_003_branch_003.png,confirmed_real,clear SMA/celiac leaving
+case_003,branch_004,extra,,,13.35,8.42,1503.78,1.5111,14.0,0.5029,299.0,0.3772,0.7739,review/crops/case_003_branch_004.png,confirmed_real,clear renal leaving
+case_003,branch_005,extra,,,7.95,-2.5,1454.62,0.9768,13.95,0.207,288.1,,0.7046,review/crops/case_003_branch_005.png,uncertain,isolated lumen no leaving
+case_004,branch_001,extra,,,17.15,20.32,1643.55,1.6348,14.0,0.4132,437.0,0.7039,0.7009,review/crops/case_004_branch_001.png,uncertain,possible SMA nub
+case_004,branch_002,extra,,,13.35,16.49,1629.08,1.9714,13.99,0.4064,431.2,0.5086,0.633,review/crops/case_004_branch_002.png,uncertain,possible SMA nub
+case_004,branch_003,extra,,,4.48,20.27,1613.3,1.6319,13.93,0.4832,416.9,0.4843,0.6738,review/crops/case_004_branch_003.png,uncertain,no leaving tube
+case_004,branch_004,extra,,,16.6,20.37,1607.45,2.1275,14.0,0.5864,421.9,0.3136,0.8117,review/crops/case_004_branch_004.png,confirmed_real,clear renal leaving
+case_004,branch_005,extra,,,12.9,23.16,1601.82,1.262,7.69,0.5401,310.0,0.4085,0.7083,review/crops/case_004_branch_005.png,uncertain,possible lumbar 1px
+case_004,branch_006,extra,,,7.2,19.84,1597.38,1.096,12.64,0.3736,332.5,0.4141,0.5203,review/crops/case_004_branch_006.png,uncertain,isolated lumen no leaving
+case_004,branch_007,extra,,,13.87,11.62,1570.22,0.9543,13.92,0.5489,313.6,0.2704,0.7692,review/crops/case_004_branch_007.png,uncertain,possible lumbar 1px
+case_004,branch_008,extra,,,4.83,8.78,1565.17,0.8906,13.97,0.5039,328.7,0.378,0.6668,review/crops/case_004_branch_008.png,uncertain,isolated lumen no leaving
+case_004,branch_009,extra,,,9.71,-1.84,1553.38,1.0232,14.0,0.5251,347.7,0.2555,0.8184,review/crops/case_004_branch_009.png,uncertain,isolated lumen no leaving
+case_004,branch_010,extra,,,11.85,6.56,1541.49,1.4311,13.79,0.495,355.4,0.2995,0.6706,review/crops/case_004_branch_010.png,uncertain,isolated lumen no leaving
+case_004,branch_011,extra,,,4.77,4.66,1518.12,1.0708,5.3,0.3644,312.5,0.5135,0.6448,review/crops/case_004_branch_011.png,uncertain,short isolated lumen
+case_005,branch_001,extra,,,49.31,24.35,1529.33,1.8273,13.97,0.2241,240.0,0.3615,0.4554,review/crops/case_005_branch_001.png,uncertain,possible SMA nub
+case_005,branch_002,extra,,,43.72,8.28,1513.28,1.6257,13.87,0.2971,244.4,0.4758,0.7505,review/crops/case_005_branch_002.png,confirmed_real,clear SMA/celiac leaving
+case_005,branch_003,extra,,,33.34,11.25,1504.83,1.5056,13.87,0.5314,237.7,0.2927,0.722,review/crops/case_005_branch_003.png,confirmed_real,clear right renal leaving
+case_005,branch_004,extra,,,50.81,16.0,1500.0,1.8457,13.96,0.4078,250.0,0.3149,0.7448,review/crops/case_005_branch_004.png,confirmed_real,clear left renal leaving
+case_005,branch_005,extra,,,44.03,4.2,1497.78,1.8773,3.07,0.1017,230.7,0.3486,0.4417,review/crops/case_005_branch_005.png,uncertain,short wall stub
+case_005,branch_006,extra,,,34.96,6.35,1493.61,0.9642,6.5,0.2755,243.0,0.6753,0.5954,review/crops/case_005_branch_006.png,uncertain,isolated lumen no leaving
+case_005,branch_007,extra,,,36.86,1.92,1439.57,0.9671,9.32,0.6561,235.5,0.1489,0.5884,review/crops/case_005_branch_007.png,uncertain,possible lumbar 1px
+case_006,branch_001,extra,,,31.97,-10.2,1635.09,1.5003,13.96,0.4221,255.4,0.4632,0.5518,review/crops/case_006_branch_001.png,uncertain,possible SMA nub
+case_006,branch_002,extra,,,27.92,-17.32,1606.17,1.6648,13.95,0.3285,261.5,0.4224,0.7191,review/crops/case_006_branch_002.png,confirmed_real,clear SMA/celiac leaving
+case_006,branch_003,extra,,,13.51,-26.08,1564.6,1.2326,13.99,0.2289,252.0,,0.5287,review/crops/case_006_branch_003.png,uncertain,isolated lumen no leaving
+case_006,branch_004,extra,,,24.33,-32.33,1481.32,1.5628,4.17,0.1289,248.1,0.4514,0.4785,review/crops/case_006_branch_004.png,uncertain,short isolated lumen
+case_007,branch_001,extra,,,15.25,1.5,-1123.88,1.7727,3.26,0.1471,213.8,0.3668,0.4791,review/crops/case_007_branch_001.png,uncertain,short possible SMA
+case_007,branch_002,extra,,,22.5,-1.54,-1135.35,1.9421,6.76,0.2009,230.5,0.3771,0.5458,review/crops/case_007_branch_002.png,uncertain,possible SMA nub
+case_007,branch_003,extra,,,20.9,-3.76,-1148.18,2.6354,14.0,0.3259,234.5,0.3292,0.5978,review/crops/case_007_branch_003.png,confirmed_real,clear SMA/celiac leaving
+case_007,branch_004,extra,,,17.84,-4.85,-1154.33,1.6866,13.99,0.2914,229.3,0.4484,0.4758,review/crops/case_007_branch_004.png,confirmed_real,clear SMA/celiac leaving
+case_007,branch_005,extra,,,23.46,-4.46,-1164.45,1.8893,13.07,0.2761,222.2,0.4022,0.5961,review/crops/case_007_branch_005.png,confirmed_real,clear renal leaving
+case_007,branch_006,extra,,,11.73,-19.54,-1222.88,1.5074,8.07,0.1944,213.9,0.4126,0.3349,review/crops/case_007_branch_006.png,uncertain,isolated lumen no leaving
+case_008,branch_001,extra,,,3.75,22.43,1521.11,2.2176,14.0,0.0336,376.6,0.6026,0.4922,review/crops/case_008_branch_001.png,uncertain,low-v near vertebra
+case_008,branch_002,extra,,,-5.51,8.94,1502.17,0.6525,13.99,0.5826,308.6,0.3706,0.602,review/crops/case_008_branch_002.png,uncertain,isolated lumen no leaving
+case_008,branch_003,extra,,,2.61,9.56,1490.05,1.6237,14.0,0.2835,385.7,1.0989,0.6877,review/crops/case_008_branch_003.png,confirmed_real,clear renal leaving
+case_008,branch_004,extra,,,0.89,-11.61,1437.08,0.8861,13.97,0.599,296.2,0.3472,0.5118,review/crops/case_008_branch_004.png,uncertain,possible lumbar 1px
+case_008,branch_005,extra,,,-0.51,-5.89,1420.56,1.0421,13.96,0.1443,300.2,0.4879,0.5926,review/crops/case_008_branch_005.png,uncertain,isolated lumen no leaving
+case_009,branch_001,extra,,,32.27,12.87,1515.51,1.5835,6.67,0.5553,372.6,0.1587,0.6021,review/crops/case_009_branch_001.png,uncertain,nearby MIP vessels
+case_009,branch_002,extra,,,23.67,2.44,1496.01,1.4525,13.94,0.5869,380.3,0.4392,0.6821,review/crops/case_009_branch_002.png,confirmed_real,clear SMA/celiac leaving
+case_009,branch_003,extra,,,6.18,-1.85,1480.46,1.0383,13.95,0.68,372.6,0.1593,0.5978,review/crops/case_009_branch_003.png,uncertain,isolated lumen no leaving
+case_009,branch_004,extra,,,19.35,3.5,1468.88,2.2091,13.89,0.721,374.7,0.2865,0.7358,review/crops/case_009_branch_004.png,confirmed_real,clear left renal leaving
+case_009,branch_005,extra,,,9.12,7.21,1404.79,0.9528,13.93,0.6396,357.8,0.2237,0.6438,review/crops/case_009_branch_005.png,uncertain,possible lumbar 1px
+case_010,branch_001,extra,,,4.67,-9.06,-1002.55,1.4464,13.99,0.3319,346.2,0.5416,0.6824,review/crops/case_010_branch_001.png,uncertain,possible SMA nub
+case_010,branch_002,extra,,,4.53,-13.92,-1014.6,1.6766,13.96,0.569,350.8,0.5097,0.6843,review/crops/case_010_branch_002.png,confirmed_real,clear SMA/celiac leaving
+case_010,branch_003,extra,,,-3.33,-15.96,-1032.27,1.7479,13.97,0.5114,339.9,0.4119,0.7499,review/crops/case_010_branch_003.png,confirmed_real,clear right renal leaving
+case_010,branch_004,extra,,,13.38,-12.57,-1042.83,1.5284,13.78,0.5983,336.2,0.6918,0.7861,review/crops/case_010_branch_004.png,confirmed_real,clear left renal leaving
+case_011,branch_001,extra,,,25.81,-1.89,1663.76,1.676,13.93,0.5771,407.9,0.4729,0.686,review/crops/case_011_branch_001.png,confirmed_real,clear SMA/celiac leaving
+case_011,branch_002,extra,,,20.2,-5.09,1651.09,2.0935,13.95,0.6819,407.0,0.5441,0.7646,review/crops/case_011_branch_002.png,confirmed_real,clear SMA/celiac leaving
+case_011,branch_003,extra,,,11.93,-7.16,1626.92,1.6565,13.83,0.6495,386.0,0.2589,0.6474,review/crops/case_011_branch_003.png,confirmed_real,clear bilateral renal leaving
+case_011,branch_004,extra,,,23.84,-5.77,1626.42,2.1997,13.98,0.6922,385.5,0.4738,0.6897,review/crops/case_011_branch_004.png,confirmed_real,clear renal leaving
+case_011,branch_005,extra,,,14.31,1.08,1619.39,1.2137,13.99,0.0395,405.8,0.2806,0.4558,review/crops/case_011_branch_005.png,confirmed_false,vertebra contact
+case_011,branch_006,extra,,,16.75,-5.39,1595.07,0.8918,13.98,0.6279,313.6,0.2768,0.4504,review/crops/case_011_branch_006.png,uncertain,possible lumbar 1px
+case_011,branch_007,extra,,,8.63,-5.85,1591.45,0.9412,13.66,0.5335,329.3,0.166,0.4714,review/crops/case_011_branch_007.png,uncertain,possible lumbar 1px
+case_011,branch_008,extra,,,10.1,-17.8,1571.85,0.9607,6.16,0.7086,354.1,0.2465,0.7153,review/crops/case_011_branch_008.png,uncertain,isolated lumen no leaving
+case_011,branch_009,extra,,,10.51,-5.52,1562.71,0.7385,13.96,0.6359,318.3,0.3484,0.6353,review/crops/case_011_branch_009.png,uncertain,possible lumbar 1px
+case_011,branch_010,extra,,,3.58,-5.11,1560.39,1.0283,13.99,0.5885,356.7,0.1478,0.7637,review/crops/case_011_branch_010.png,uncertain,possible lumbar 1px
+case_012,branch_001,extra,,,6.57,24.08,1470.94,1.6624,13.91,0.3935,260.7,0.2964,0.5614,review/crops/case_012_branch_001.png,confirmed_real,clear SMA/celiac leaving
+case_012,branch_002,extra,,,5.89,18.0,1453.26,1.5993,13.97,0.504,257.6,0.3618,0.7026,review/crops/case_012_branch_002.png,confirmed_real,clear SMA/celiac leaving
+case_012,branch_003,extra,,,-0.15,22.99,1442.29,1.8362,13.97,0.5756,252.4,0.245,0.7388,review/crops/case_012_branch_003.png,confirmed_real,clear renal leaving
+case_012,branch_004,extra,,,16.5,23.61,1438.7,1.7374,11.66,0.4643,252.6,0.4559,0.7626,review/crops/case_012_branch_004.png,confirmed_real,clear renal leaving
+case_012,branch_005,extra,,,2.73,24.32,1405.26,0.7219,8.36,0.5191,241.8,0.2526,0.7972,review/crops/case_012_branch_005.png,uncertain,possible lumbar 1px
+case_012,branch_006,extra,,,7.11,17.85,1371.24,1.0341,13.67,0.6588,249.4,0.1832,0.6055,review/crops/case_012_branch_006.png,uncertain,possible lumbar 1px
+case_012,branch_007,extra,,,4.89,3.34,1370.25,1.1787,4.6,0.269,235.9,0.1923,0.5231,review/crops/case_012_branch_007.png,uncertain,short possible lumbar
+case_012,branch_008,extra,,,-1.4,16.51,1368.53,0.703,10.96,0.5698,243.0,0.3217,0.6085,review/crops/case_012_branch_008.png,uncertain,possible lumbar 1px
+case_012,branch_009,extra,,,4.34,17.78,1344.46,1.0618,13.83,0.5971,234.1,0.3738,0.582,review/crops/case_012_branch_009.png,uncertain,possible lumbar 1px
+case_013,branch_001,extra,,,-0.87,17.4,1601.97,1.2368,13.96,0.6603,274.9,0.4936,0.5388,review/crops/case_013_branch_001.png,confirmed_real,clear celiac bifurcation leaving
+case_013,branch_002,extra,,,2.22,13.44,1588.49,1.9048,13.99,0.6142,278.9,0.4811,0.7112,review/crops/case_013_branch_002.png,confirmed_real,clear SMA/celiac leaving
+case_013,branch_003,extra,,,6.8,23.22,1583.06,0.9932,12.6,0.6468,265.0,0.1694,0.4826,review/crops/case_013_branch_003.png,confirmed_real,clear leaving tube
+case_013,branch_004,extra,,,-9.85,16.61,1581.09,0.9971,8.18,0.5959,262.1,0.3313,0.5205,review/crops/case_013_branch_004.png,confirmed_real,clear renal leaving
+case_013,branch_005,extra,,,-6.1,3.99,1521.73,1.7255,2.03,0.2824,262.1,0.2046,0.4876,review/crops/case_013_branch_005.png,uncertain,short isolated lumen
+case_014,branch_001,extra,,,8.66,7.43,1510.29,1.5758,13.6,0.669,399.1,0.3881,0.6796,review/crops/case_014_branch_001.png,uncertain,possible SMA nub
+case_014,branch_002,extra,,,3.95,5.29,1504.32,0.9368,13.93,0.6664,377.6,0.4346,0.7488,review/crops/case_014_branch_002.png,confirmed_real,clear SMA/celiac leaving
+case_014,branch_003,extra,,,7.82,4.9,1490.93,1.5758,14.0,0.7043,409.4,0.4796,0.716,review/crops/case_014_branch_003.png,confirmed_real,clear visceral leaving
+case_014,branch_004,extra,,,-0.8,11.93,1471.75,1.6608,12.81,0.5019,387.3,0.6865,0.3551,review/crops/case_014_branch_004.png,confirmed_real,clear right renal leaving
+case_014,branch_005,extra,,,11.13,10.75,1465.77,1.5894,13.92,0.6047,386.8,0.5101,0.726,review/crops/case_014_branch_005.png,confirmed_real,clear left renal leaving
+case_014,branch_006,extra,,,9.33,0.41,1422.96,1.1853,6.09,0.1902,423.5,0.5705,0.3828,review/crops/case_014_branch_006.png,uncertain,isolated lumen no leaving
+case_014,branch_007,extra,,,11.75,-13.22,1409.07,0.9284,8.07,0.7405,369.9,0.2322,0.5866,review/crops/case_014_branch_007.png,uncertain,possible lumbar 1px
+case_014,branch_008,extra,,,8.09,-2.43,1402.26,0.6794,4.69,0.3702,372.2,0.4102,0.5082,review/crops/case_014_branch_008.png,uncertain,possible lumbar 1px
+case_015,branch_001,extra,,,19.65,16.31,1563.88,1.6045,13.99,0.4,399.8,0.5446,0.5932,review/crops/case_015_branch_001.png,uncertain,possible SMA nub
+case_015,branch_002,extra,,,17.96,14.5,1550.41,1.7407,13.99,0.3596,404.7,0.591,0.6695,review/crops/case_015_branch_002.png,confirmed_real,clear SMA/celiac leaving
+case_015,branch_003,extra,,,10.99,17.84,1541.19,2.7306,13.99,0.5252,403.3,0.3554,0.6819,review/crops/case_015_branch_003.png,uncertain,possible renal vs SMA
+case_015,branch_004,extra,,,28.25,23.11,1537.77,2.7618,13.99,0.5266,398.9,0.2898,0.7919,review/crops/case_015_branch_004.png,confirmed_real,clear renal leaving
+case_015,branch_005,extra,,,10.47,10.19,1497.17,1.4789,13.99,0.1633,409.5,0.5109,0.358,review/crops/case_015_branch_005.png,uncertain,isolated lumen near vertebra
+case_015,branch_006,extra,,,17.78,-8.39,1481.92,1.1496,7.89,0.5323,402.0,0.3362,0.4196,review/crops/case_015_branch_006.png,uncertain,isolated lumen no leaving
+case_015,branch_007,extra,,,10.31,-10.99,1448.17,0.9512,13.97,0.675,379.3,0.334,0.6902,review/crops/case_015_branch_007.png,uncertain,possible lumbar 1px
+case_015,branch_008,extra,,,2.06,-13.51,1444.83,0.9512,13.91,0.6709,380.9,0.2124,0.6621,review/crops/case_015_branch_008.png,uncertain,possible lumbar 1px
+case_016,branch_001,extra,,,27.59,-102.47,488.44,1.928,4.5,0.2321,88.3,0.4471,0.4562,review/crops/case_016_branch_001.png,confirmed_false,vertebra contact
+case_016,branch_002,extra,,,41.53,-121.97,482.0,2.0713,3.0,0.3612,149.5,0.2312,0.5102,review/crops/case_016_branch_002.png,uncertain,low-contrast isolated lumen
+case_016,branch_003,extra,,,38.66,-124.45,478.14,2.1534,5.74,0.3793,100.2,0.2115,0.6531,review/crops/case_016_branch_003.png,uncertain,low-contrast isolated lumen
+case_016,branch_004,extra,,,27.64,-104.64,477.78,1.928,8.87,0.1468,143.4,0.4223,0.5428,review/crops/case_016_branch_004.png,confirmed_false,vertebra contact
+case_016,branch_005,extra,,,34.03,-132.47,471.5,2.0713,3.35,0.2446,96.0,0.3021,0.6786,review/crops/case_016_branch_005.png,uncertain,low-contrast isolated lumen
+case_016,branch_006,extra,,,18.66,-121.0,464.58,2.0713,13.91,0.0,205.3,0.1641,0.5485,review/crops/case_016_branch_006.png,uncertain,low-contrast lumen near bone
+case_016,branch_007,extra,,,35.44,-130.49,462.91,1.7865,6.7,0.2892,139.5,0.4812,0.2124,review/crops/case_016_branch_007.png,uncertain,low-contrast isolated lumen
+case_016,branch_008,extra,,,29.18,-136.67,452.5,2.0713,8.12,0.0476,99.5,0.2233,0.2369,review/crops/case_016_branch_008.png,uncertain,low-contrast isolated lumen
+case_016,branch_009,extra,,,-0.72,-135.48,427.53,2.1849,13.42,0.1828,135.7,0.4634,0.4815,review/crops/case_016_branch_009.png,uncertain,low-contrast lumen near bone
+case_016,branch_010,extra,,,22.03,-141.47,426.5,1.7195,3.35,0.0588,150.8,0.4389,0.5435,review/crops/case_016_branch_010.png,uncertain,low-contrast isolated lumen
+case_016,branch_011,extra,,,-1.87,-138.52,409.66,2.1693,7.79,0.2428,140.0,0.4742,0.589,review/crops/case_016_branch_011.png,uncertain,low-contrast lumen near bone
+case_016,branch_012,extra,,,4.03,-131.97,405.5,2.4024,13.75,0.0,177.4,0.3501,0.6768,review/crops/case_016_branch_012.png,uncertain,isolated lumen near vertebra
+case_016,branch_013,extra,,,21.06,-138.99,402.27,2.1047,6.18,0.1929,108.1,0.4261,0.5442,review/crops/case_016_branch_013.png,uncertain,low-contrast lumen near bone
+case_016,branch_014,extra,,,12.29,-157.59,388.5,1.9468,13.91,0.1202,151.3,0.3889,0.6753,review/crops/case_016_branch_014.png,uncertain,low-contrast isolated lumen
+case_016,branch_015,extra,,,5.53,-146.97,381.0,2.0881,5.61,0.1819,92.7,0.2311,0.5957,review/crops/case_016_branch_015.png,uncertain,low-contrast lumen near bone
+case_016,branch_016,extra,,,25.39,-150.59,380.12,2.2005,7.24,0.141,107.4,0.3961,0.5274,review/crops/case_016_branch_016.png,uncertain,low-contrast isolated lumen
+case_016,branch_017,extra,,,18.38,-144.82,378.99,1.6722,13.91,0.1576,121.1,0.4834,0.4397,review/crops/case_016_branch_017.png,uncertain,low-contrast lumen near bone
+case_017,branch_001,extra,,,12.88,-139.34,205.3,1.5694,5.6,0.2622,340.3,0.2955,0.7456,review/crops/case_017_branch_001.png,uncertain,isolated lumen nearby MIP vessels
+case_018,branch_001,extra,,,44.76,-154.86,1044.08,2.2158,6.36,0.1572,37.6,0.2336,0.3285,review/crops/case_018_branch_001.png,uncertain,low-contrast isolated lumen
+case_018,branch_002,extra,,,28.9,-162.06,946.06,2.712,13.91,0.0051,95.1,0.2956,0.832,review/crops/case_018_branch_002.png,uncertain,low-contrast lumen near bone
+case_018,branch_003,extra,,,32.55,-194.45,833.16,1.7647,7.86,0.2445,21.7,0.3593,0.9512,review/crops/case_018_branch_003.png,uncertain,low-contrast isolated lumen
+case_018,branch_004,extra,,,33.51,-191.24,827.7,1.8288,6.0,0.3167,28.6,0.2673,1.0,review/crops/case_018_branch_004.png,uncertain,low-contrast isolated lumen
+case_018,branch_005,extra,,,29.01,-192.74,812.7,1.7195,7.72,0.191,17.0,0.2611,0.686,review/crops/case_018_branch_005.png,uncertain,low-contrast isolated lumen
+case_19,branch_001,draft_match,branch_003,2.11,17.32,-181.55,303.28,2.8807,13.91,0.2423,472.5,0.2777,0.653,review/crops/case_19_branch_001.png,,
+case_19,branch_002,draft_match,branch_001,1.68,6.13,-174.87,283.1,1.5694,13.75,0.4236,357.7,0.1627,0.6514,review/crops/case_19_branch_002.png,,
+case_19,branch_003,draft_match,branch_002,1.06,12.88,-168.87,281.6,1.928,13.91,0.0953,412.4,0.2346,0.4466,review/crops/case_19_branch_003.png,,
+case_19,branch_004,extra,,,21.4,-176.98,260.25,1.419,7.72,0.3645,353.1,0.24,0.7054,review/crops/case_19_branch_004.png,,
+case_20,branch_001,draft_match,branch_004,2.5,11.9,-126.99,360.03,2.2158,13.91,0.0895,330.3,0.4323,0.6079,review/crops/case_20_branch_001.png,,
+case_20,branch_002,draft_match,branch_001,7.41,20.88,-143.91,343.62,1.7195,13.91,0.399,333.5,0.3921,0.842,review/crops/case_20_branch_002.png,,
+case_20,branch_003,draft_match,branch_002,1.74,10.99,-135.76,339.5,1.8288,12.9,0.4008,300.8,0.2659,0.7979,review/crops/case_20_branch_003.png,,
+case_21,branch_001,draft_match,branch_003,3.14,19.32,-165.68,414.78,2.0881,13.91,0.4491,499.6,0.2996,0.6866,review/crops/case_21_branch_001.png,,
+case_21,branch_002,draft_match,branch_002,1.96,35.68,-154.57,407.0,2.1211,13.91,0.4455,475.8,0.0404,0.8156,review/crops/case_21_branch_002.png,,
+case_21,branch_003,draft_match,branch_001,2.65,15.71,-159.99,403.68,2.3333,13.91,0.3107,470.7,0.2665,0.6755,review/crops/case_21_branch_003.png,,
+case_21,branch_004,extra,,,26.68,-150.82,387.5,1.5963,4.24,0.4052,316.1,0.2916,0.7194,review/crops/case_21_branch_004.png,,
+case_21,branch_005,extra,,,28.39,-151.16,374.75,1.6722,10.94,0.4167,344.2,0.1999,0.6269,review/crops/case_21_branch_005.png,,
+case_21,branch_006,extra,,,25.51,-167.89,355.21,2.231,13.91,0.3135,423.6,0.3371,0.5858,review/crops/case_21_branch_006.png,,
+case_21,branch_007,extra,,,28.72,-166.3,339.77,1.8893,13.5,0.4348,390.1,0.4118,0.6691,review/crops/case_21_branch_007.png,,
+case_21,branch_008,extra,,,12.71,-170.4,336.17,2.3191,13.91,0.2921,427.5,0.367,0.5436,review/crops/case_21_branch_008.png,,
+case_21,branch_009,extra,,,3.99,-157.38,324.5,1.6962,13.67,0.3196,377.8,0.2435,0.7497,review/crops/case_21_branch_009.png,,
+case_22,branch_001,extra,,,7.14,-120.61,403.1,1.3847,12.09,0.2563,183.6,0.2631,0.6342,review/crops/case_22_branch_001.png,,
+case_22,branch_002,extra,,,8.04,-128.41,350.9,1.5694,13.42,0.3158,163.0,0.3677,0.7623,review/crops/case_22_branch_002.png,,
+case_22,branch_003,extra,,,21.39,-143.22,348.24,1.5128,6.18,0.4266,163.0,0.5622,0.6644,review/crops/case_22_branch_003.png,,
+case_22,branch_004,draft_match,branch_005,2.17,16.21,-147.85,338.46,2.658,13.91,0.628,225.2,0.4117,0.7481,review/crops/case_22_branch_004.png,,
+case_22,branch_005,draft_match,branch_004,1.54,15.54,-149.65,323.66,4.1173,13.91,0.56,216.5,0.5073,0.7453,review/crops/case_22_branch_005.png,,
+case_22,branch_006,draft_match,branch_003,1.61,5.52,-144.14,314.84,2.5716,13.5,0.3154,196.8,0.351,0.6619,review/crops/case_22_branch_006.png,,
+case_22,branch_007,draft_match,branch_002,1.68,22.03,-140.2,308.54,2.1374,13.75,0.4619,194.1,0.2119,0.8207,review/crops/case_22_branch_007.png,,
+case_22,branch_008,extra,,,16.77,-150.68,303.03,2.7532,13.91,0.157,153.8,0.3932,0.691,review/crops/case_22_branch_008.png,,
+case_22,branch_009,draft_match,branch_006,2.58,18.19,-153.81,252.38,1.7865,13.5,0.5073,186.6,0.5377,0.603,review/crops/case_22_branch_009.png,,
+case_22,branch_010,draft_match,branch_001,1.48,14.71,-161.34,242.6,2.1693,13.75,0.3832,170.0,0.1278,0.6176,review/crops/case_22_branch_010.png,,
+case_22,branch_011,extra,,,14.64,-162.61,209.6,1.5416,10.92,0.3852,182.5,0.4159,0.429,review/crops/case_22_branch_011.png,,
+case_23,branch_001,draft_match,branch_001,5.81,12.14,-158.36,271.0,2.2158,4.74,0.1126,281.1,0.1849,0.6548,review/crops/case_23_branch_001.png,,
+case_23,branch_002,draft_match,branch_003,1.96,7.06,-144.07,263.29,2.1047,13.91,0.0,305.1,0.3123,0.6634,review/crops/case_23_branch_002.png,,
+subject025,branch_001,extra,,,12.46,-164.21,-1.12,4.1173,13.91,0.6202,463.8,0.5257,0.7507,review/crops/subject025_branch_001.png,,
+subject025,branch_002,extra,,,12.62,-123.02,-6.89,1.8695,8.82,0.4858,421.0,0.3402,0.5577,review/crops/subject025_branch_002.png,,
+subject025,branch_003,extra,,,7.24,-173.67,-8.97,2.3047,13.91,0.5875,452.8,0.2762,0.6305,review/crops/subject025_branch_003.png,,
+subject025,branch_004,extra,,,14.09,-143.66,-13.79,1.7647,12.73,0.4048,353.2,0.3269,0.5939,review/crops/subject025_branch_004.png,,
+subject025,branch_005,extra,,,28.15,-117.6,-31.6,4.996,13.91,0.0747,508.3,0.5299,0.9228,review/crops/subject025_branch_005.png,,
+subject025,branch_006,extra,,,10.15,-167.85,-57.85,2.746,13.91,0.0283,523.8,0.1868,0.7321,review/crops/subject025_branch_006.png,,
+subject025,branch_007,extra,,,25.15,-116.85,-79.6,4.246,13.91,0.0599,431.1,0.4828,0.8614,review/crops/subject025_branch_007.png,,
+subject025,branch_008,extra,,,20.09,-162.47,-80.83,2.0881,13.91,0.0229,493.8,0.3061,0.6721,review/crops/subject025_branch_008.png,,
+subject025,branch_009,extra,,,11.57,-185.35,-88.77,1.4829,12.09,0.5882,345.4,0.1703,0.6572,review/crops/subject025_branch_009.png,,
+subject025,branch_010,extra,,,-3.2,-173.99,-99.6,2.9172,13.91,0.0266,454.2,0.3367,0.7114,review/crops/subject025_branch_010.png,,
+subject025,branch_011,extra,,,8.65,-109.35,-114.1,2.3613,13.91,0.0963,398.9,0.2212,0.5815,review/crops/subject025_branch_011.png,,
+subject025,branch_012,extra,,,3.8,-145.82,-188.05,1.8288,13.91,0.5876,450.6,0.4051,0.7058,review/crops/subject025_branch_012.png,,
+subject025,branch_013,extra,,,-0.48,-152.64,-209.04,3.3828,13.91,0.5909,461.7,0.3346,0.6958,review/crops/subject025_branch_013.png,,
+subject025,branch_014,extra,,,2.21,-141.68,-228.32,1.9468,13.91,0.4764,431.6,0.2063,0.7696,review/crops/subject025_branch_014.png,,
+subject025,branch_015,extra,,,-15.73,-144.91,-231.44,2.4956,13.91,0.4822,462.0,0.4153,0.745,review/crops/subject025_branch_015.png,,
+subject025,branch_016,extra,,,-16.1,-140.85,-262.6,2.0542,13.91,0.126,393.3,0.6331,0.5992,review/crops/subject025_branch_016.png,,
+subject025,branch_017,extra,,,-15.35,-140.85,-273.1,1.6223,3.35,0.2569,390.8,0.3391,0.5829,review/crops/subject025_branch_017.png,,
+subject025,branch_018,extra,,,-4.85,-160.35,-285.1,1.6223,4.72,0.058,381.5,0.3485,0.4287,review/crops/subject025_branch_018.png,,
+subject025,branch_019,extra,,,-1.85,-151.03,-299.71,1.2682,12.04,0.2655,363.2,0.3678,0.6045,review/crops/subject025_branch_019.png,,
+subject025,branch_020,extra,,,4.15,-161.85,-308.35,1.4517,3.67,0.5121,376.2,0.4287,0.4709,review/crops/subject025_branch_020.png,,
+subject025,branch_021,extra,,,-2.03,-152.53,-322.6,1.5694,13.91,0.5256,397.7,0.4157,0.5537,review/crops/subject025_branch_021.png,,
+subject024,branch_001,extra,,,15.77,-96.14,1901.68,1.9468,3.0,0.1658,54.7,0.3292,0.4755,,,
