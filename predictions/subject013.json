@@ -1,0 +1,108 @@
+{
+  "case_id": "subject013",
+  "parent": {
+    "instance_id": "aorta"
+  },
+  "daughters": [
+    {
+      "instance_id": "branch_001",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        -0.871726,
+        17.402655,
+        1601.971151
+      ],
+      "seed_xyz_mm": [
+        -0.954,
+        11.713998,
+        1600.930055
+      ],
+      "radius_mm": 1.2368,
+      "direction_xyz": [
+        -0.014225,
+        -0.983563,
+        -0.180004
+      ]
+    },
+    {
+      "instance_id": "branch_002",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        2.223777,
+        13.437942,
+        1588.493018
+      ],
+      "seed_xyz_mm": [
+        2.478,
+        7.423998,
+        1588.930055
+      ],
+      "radius_mm": 1.9048,
+      "direction_xyz": [
+        0.042124,
+        -0.996485,
+        0.072415
+      ]
+    },
+    {
+      "instance_id": "branch_003",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        6.80232,
+        23.222637,
+        1583.063388
+      ],
+      "seed_xyz_mm": [
+        11.915999,
+        24.583997,
+        1578.530055
+      ],
+      "radius_mm": 0.9932,
+      "direction_xyz": [
+        0.733872,
+        0.195371,
+        -0.650586
+      ]
+    },
+    {
+      "instance_id": "branch_004",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        -9.846,
+        16.612397,
+        1581.090055
+      ],
+      "seed_xyz_mm": [
+        -14.682,
+        14.287998,
+        1579.330055
+      ],
+      "radius_mm": 0.9971,
+      "direction_xyz": [
+        -0.856401,
+        -0.411625,
+        -0.311676
+      ]
+    },
+    {
+      "instance_id": "branch_005",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        -0.459124,
+        11.357301,
+        1532.142039
+      ],
+      "seed_xyz_mm": [
+        -1.812,
+        10.855998,
+        1527.330054
+      ],
+      "radius_mm": 1.7255,
+      "direction_xyz": [
+        -0.269303,
+        -0.099789,
+        -0.957872
+      ]
+    }
+  ]
+}

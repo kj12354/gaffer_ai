@@ -1,0 +1,263 @@
+{
+  "match_threshold_mm": 10.0,
+  "overall": {
+    "n_gt": 19,
+    "n_pred": 29,
+    "n_matched": 17,
+    "precision": 0.5862,
+    "recall": 0.8947,
+    "f1": 0.7083,
+    "mean_ostium_err_mm": 2.762
+  },
+  "cases": [
+    {
+      "case_id": "case_19",
+      "n_gt": 3,
+      "n_pred": 4,
+      "n_matched": 3,
+      "precision": 0.75,
+      "recall": 1.0,
+      "f1": 0.8571,
+      "mean_ostium_err_mm": 1.615,
+      "mean_seed_err_mm": 1.554,
+      "mean_dir_cosine": 0.949,
+      "flags": [
+        "FP branch_004"
+      ],
+      "matches": [
+        {
+          "gt": "branch_001",
+          "pred": "branch_002",
+          "ostium_err_mm": 1.677,
+          "seed_err_mm": 2.041,
+          "direction_cosine": 0.96,
+          "pred_radius_mm": 1.5694,
+          "gt_radius_mm": null
+        },
+        {
+          "gt": "branch_002",
+          "pred": "branch_003",
+          "ostium_err_mm": 1.061,
+          "seed_err_mm": 1.181,
+          "direction_cosine": 0.993,
+          "pred_radius_mm": 1.928,
+          "gt_radius_mm": null
+        },
+        {
+          "gt": "branch_003",
+          "pred": "branch_001",
+          "ostium_err_mm": 2.106,
+          "seed_err_mm": 1.441,
+          "direction_cosine": 0.894,
+          "pred_radius_mm": 2.8807,
+          "gt_radius_mm": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_20",
+      "n_gt": 4,
+      "n_pred": 3,
+      "n_matched": 3,
+      "precision": 1.0,
+      "recall": 0.75,
+      "f1": 0.8571,
+      "mean_ostium_err_mm": 3.884,
+      "mean_seed_err_mm": 5.557,
+      "mean_dir_cosine": 0.671,
+      "flags": [
+        "branch_001 direction cosine 0.03 vs branch_004",
+        "FN branch_003"
+      ],
+      "matches": [
+        {
+          "gt": "branch_001",
+          "pred": "branch_002",
+          "ostium_err_mm": 7.413,
+          "seed_err_mm": 7.709,
+          "direction_cosine": 0.995,
+          "pred_radius_mm": 1.7195,
+          "gt_radius_mm": 1.246
+        },
+        {
+          "gt": "branch_002",
+          "pred": "branch_003",
+          "ostium_err_mm": 1.735,
+          "seed_err_mm": 1.3,
+          "direction_cosine": 0.983,
+          "pred_radius_mm": 1.8288,
+          "gt_radius_mm": null
+        },
+        {
+          "gt": "branch_004",
+          "pred": "branch_001",
+          "ostium_err_mm": 2.504,
+          "seed_err_mm": 7.663,
+          "direction_cosine": 0.034,
+          "pred_radius_mm": 2.2158,
+          "gt_radius_mm": null,
+          "flag": "direction_mismatch"
+        }
+      ]
+    },
+    {
+      "case_id": "case_21",
+      "n_gt": 3,
+      "n_pred": 9,
+      "n_matched": 3,
+      "precision": 0.3333,
+      "recall": 1.0,
+      "f1": 0.5,
+      "mean_ostium_err_mm": 2.584,
+      "mean_seed_err_mm": 2.209,
+      "mean_dir_cosine": 0.949,
+      "flags": [
+        "FP branch_004",
+        "FP branch_005",
+        "FP branch_006",
+        "FP branch_007",
+        "FP branch_008",
+        "FP branch_009"
+      ],
+      "matches": [
+        {
+          "gt": "branch_001",
+          "pred": "branch_003",
+          "ostium_err_mm": 2.649,
+          "seed_err_mm": 1.239,
+          "direction_cosine": 0.935,
+          "pred_radius_mm": 2.3333,
+          "gt_radius_mm": null
+        },
+        {
+          "gt": "branch_002",
+          "pred": "branch_002",
+          "ostium_err_mm": 1.963,
+          "seed_err_mm": 1.84,
+          "direction_cosine": 0.989,
+          "pred_radius_mm": 2.1211,
+          "gt_radius_mm": null
+        },
+        {
+          "gt": "branch_003",
+          "pred": "branch_001",
+          "ostium_err_mm": 3.139,
+          "seed_err_mm": 3.549,
+          "direction_cosine": 0.924,
+          "pred_radius_mm": 2.0881,
+          "gt_radius_mm": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_22",
+      "n_gt": 6,
+      "n_pred": 11,
+      "n_matched": 6,
+      "precision": 0.5455,
+      "recall": 1.0,
+      "f1": 0.7059,
+      "mean_ostium_err_mm": 1.845,
+      "mean_seed_err_mm": 1.93,
+      "mean_dir_cosine": 0.941,
+      "flags": [
+        "FP branch_001",
+        "FP branch_002",
+        "FP branch_003",
+        "FP branch_008",
+        "FP branch_011"
+      ],
+      "matches": [
+        {
+          "gt": "branch_001",
+          "pred": "branch_010",
+          "ostium_err_mm": 1.481,
+          "seed_err_mm": 1.646,
+          "direction_cosine": 0.816,
+          "pred_radius_mm": 2.1693,
+          "gt_radius_mm": null
+        },
+        {
+          "gt": "branch_002",
+          "pred": "branch_007",
+          "ostium_err_mm": 1.684,
+          "seed_err_mm": 1.767,
+          "direction_cosine": 0.932,
+          "pred_radius_mm": 2.1374,
+          "gt_radius_mm": 2.102
+        },
+        {
+          "gt": "branch_003",
+          "pred": "branch_006",
+          "ostium_err_mm": 1.615,
+          "seed_err_mm": 1.964,
+          "direction_cosine": 0.955,
+          "pred_radius_mm": 2.5716,
+          "gt_radius_mm": null
+        },
+        {
+          "gt": "branch_004",
+          "pred": "branch_005",
+          "ostium_err_mm": 1.543,
+          "seed_err_mm": 1.552,
+          "direction_cosine": 0.998,
+          "pred_radius_mm": 4.1173,
+          "gt_radius_mm": null
+        },
+        {
+          "gt": "branch_005",
+          "pred": "branch_004",
+          "ostium_err_mm": 2.174,
+          "seed_err_mm": 2.958,
+          "direction_cosine": 0.976,
+          "pred_radius_mm": 2.658,
+          "gt_radius_mm": null
+        },
+        {
+          "gt": "branch_006",
+          "pred": "branch_009",
+          "ostium_err_mm": 2.575,
+          "seed_err_mm": 1.691,
+          "direction_cosine": 0.971,
+          "pred_radius_mm": 1.7865,
+          "gt_radius_mm": null
+        }
+      ]
+    },
+    {
+      "case_id": "case_23",
+      "n_gt": 3,
+      "n_pred": 2,
+      "n_matched": 2,
+      "precision": 1.0,
+      "recall": 0.6667,
+      "f1": 0.8,
+      "mean_ostium_err_mm": 3.88,
+      "mean_seed_err_mm": 4.746,
+      "mean_dir_cosine": 0.675,
+      "flags": [
+        "FN branch_002"
+      ],
+      "matches": [
+        {
+          "gt": "branch_001",
+          "pred": "branch_001",
+          "ostium_err_mm": 5.805,
+          "seed_err_mm": 5.588,
+          "direction_cosine": 0.983,
+          "pred_radius_mm": 2.2158,
+          "gt_radius_mm": null
+        },
+        {
+          "gt": "branch_003",
+          "pred": "branch_002",
+          "ostium_err_mm": 1.955,
+          "seed_err_mm": 3.904,
+          "direction_cosine": 0.368,
+          "pred_radius_mm": 2.1047,
+          "gt_radius_mm": null
+        }
+      ]
+    }
+  ]
+}

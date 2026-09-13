@@ -1,0 +1,9 @@
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.mplconfig/
+
+# Challenge CT volumes (some files exceed GitHub's 100 MB limit; ~2 GB total)
+*.nii
+*.nii.gz

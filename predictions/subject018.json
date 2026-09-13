@@ -1,0 +1,108 @@
+{
+  "case_id": "subject018",
+  "parent": {
+    "instance_id": "aorta"
+  },
+  "daughters": [
+    {
+      "instance_id": "branch_001",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        44.761719,
+        -154.863281,
+        1044.075012
+      ],
+      "seed_xyz_mm": [
+        50.011719,
+        -157.488281,
+        1045.200012
+      ],
+      "radius_mm": 2.2158,
+      "direction_xyz": [
+        0.878438,
+        -0.439219,
+        0.188237
+      ]
+    },
+    {
+      "instance_id": "branch_002",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        28.901972,
+        -162.062643,
+        946.064592
+      ],
+      "seed_xyz_mm": [
+        21.511719,
+        -169.488281,
+        946.200012
+      ],
+      "radius_mm": 2.712,
+      "direction_xyz": [
+        -0.705357,
+        -0.708734,
+        0.012925
+      ]
+    },
+    {
+      "instance_id": "branch_003",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        32.547433,
+        -194.452567,
+        833.164298
+      ],
+      "seed_xyz_mm": [
+        36.511719,
+        -196.488281,
+        829.200012
+      ],
+      "radius_mm": 1.7647,
+      "direction_xyz": [
+        0.664647,
+        -0.341305,
+        -0.664647
+      ]
+    },
+    {
+      "instance_id": "branch_004",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        33.511719,
+        -191.238281,
+        827.700012
+      ],
+      "seed_xyz_mm": [
+        35.011719,
+        -190.488281,
+        820.200012
+      ],
+      "radius_mm": 1.8288,
+      "direction_xyz": [
+        0.19518,
+        0.09759,
+        -0.9759
+      ]
+    },
+    {
+      "instance_id": "branch_005",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        29.011719,
+        -192.738281,
+        812.700012
+      ],
+      "seed_xyz_mm": [
+        33.511719,
+        -190.488281,
+        812.700012
+      ],
+      "radius_mm": 1.7195,
+      "direction_xyz": [
+        0.894427,
+        0.447214,
+        0.0
+      ]
+    }
+  ]
+}

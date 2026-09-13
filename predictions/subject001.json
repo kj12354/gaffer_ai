@@ -1,0 +1,208 @@
+{
+  "case_id": "subject001",
+  "parent": {
+    "instance_id": "aorta"
+  },
+  "daughters": [
+    {
+      "instance_id": "branch_001",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        11.484959,
+        36.050582,
+        -958.34887
+      ],
+      "seed_xyz_mm": [
+        15.054992,
+        26.750998,
+        -958.439939
+      ],
+      "radius_mm": 1.7054,
+      "direction_xyz": [
+        0.358376,
+        -0.933533,
+        -0.009142
+      ]
+    },
+    {
+      "instance_id": "branch_002",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        16.462102,
+        31.925926,
+        -975.891977
+      ],
+      "seed_xyz_mm": [
+        18.182992,
+        26.750998,
+        -977.63994
+      ],
+      "radius_mm": 1.7598,
+      "direction_xyz": [
+        0.300496,
+        -0.903627,
+        -0.305223
+      ]
+    },
+    {
+      "instance_id": "branch_003",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        10.146802,
+        33.128605,
+        -981.658946
+      ],
+      "seed_xyz_mm": [
+        5.670992,
+        27.532998,
+        -986.43994
+      ],
+      "radius_mm": 1.4316,
+      "direction_xyz": [
+        -0.519595,
+        -0.649592,
+        -0.555024
+      ]
+    },
+    {
+      "instance_id": "branch_004",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        19.210437,
+        35.358706,
+        -991.350889
+      ],
+      "seed_xyz_mm": [
+        25.220992,
+        36.916998,
+        -995.23994
+      ],
+      "radius_mm": 1.231,
+      "direction_xyz": [
+        0.820369,
+        0.212688,
+        -0.530809
+      ]
+    },
+    {
+      "instance_id": "branch_005",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        15.564992,
+        26.363398,
+        -1025.952984
+      ],
+      "seed_xyz_mm": [
+        15.836992,
+        25.968998,
+        -1020.83994
+      ],
+      "radius_mm": 1.8291,
+      "direction_xyz": [
+        0.052965,
+        -0.0768,
+        0.995639
+      ]
+    },
+    {
+      "instance_id": "branch_006",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        19.491487,
+        30.568087,
+        -1030.503307
+      ],
+      "seed_xyz_mm": [
+        26.784992,
+        31.442998,
+        -1030.439941
+      ],
+      "radius_mm": 0.985,
+      "direction_xyz": [
+        0.992845,
+        0.119099,
+        0.008626
+      ]
+    },
+    {
+      "instance_id": "branch_007",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        16.666386,
+        37.84118,
+        -1053.591456
+      ],
+      "seed_xyz_mm": [
+        20.528992,
+        42.390998,
+        -1047.239941
+      ],
+      "radius_mm": 1.1864,
+      "direction_xyz": [
+        0.443181,
+        0.522029,
+        0.728749
+      ]
+    },
+    {
+      "instance_id": "branch_008",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        18.266507,
+        28.026493,
+        -1056.847708
+      ],
+      "seed_xyz_mm": [
+        21.310992,
+        25.968998,
+        -1061.639941
+      ],
+      "radius_mm": 1.0051,
+      "direction_xyz": [
+        0.50415,
+        -0.34071,
+        -0.793568
+      ]
+    },
+    {
+      "instance_id": "branch_009",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        19.013867,
+        32.249435,
+        -1072.327441
+      ],
+      "seed_xyz_mm": [
+        26.002992,
+        38.480998,
+        -1071.239941
+      ],
+      "radius_mm": 1.1864,
+      "direction_xyz": [
+        0.741417,
+        0.661054,
+        0.115364
+      ]
+    },
+    {
+      "instance_id": "branch_010",
+      "parent_instance_id": "aorta",
+      "ostium_xyz_mm": [
+        12.073617,
+        39.702873,
+        -1073.039941
+      ],
+      "seed_xyz_mm": [
+        8.016992,
+        43.172998,
+        -1071.239941
+      ],
+      "radius_mm": 1.4079,
+      "direction_xyz": [
+        -0.720071,
+        0.615964,
+        0.319509
+      ]
+    }
+  ]
+}
